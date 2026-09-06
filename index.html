@@ -306,44 +306,14 @@
 
     <!-- 5. ÁREA DO VÍDEO -->
     <div class="video-wrapper">
-      <div class="video-inner">
-        
-        <!-- PLAYER VTURB ORIGINAL DA OFERTA -->
-        <vturb-smartplayer id="vid-6a8bfa5fe6b8e7f236d8b7fb" style="display:block;margin:0 auto;width:100%;max-width:400px">
-          <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:100% 0 0;z-index:0;background-color:#000"></div>
-        </vturb-smartplayer>
-
-        <script type="text/javascript">
-          // Intercepta a configuração do VTurb para desativar a headline interna duplicada (a de baixo)
-          (function() {
-            var playerEl = document.getElementById("vid-6a8bfa5fe6b8e7f236d8b7fb");
-            if (playerEl) {
-              var realStart = null;
-              Object.defineProperty(playerEl, "start", {
-                set: function(fn) {
-                  realStart = fn;
-                  this._customStart = function(config) {
-                    if (config) {
-                      config.headlines = [];
-                      if (config.video) config.video.headlines = [];
-                    }
-                    return realStart ? realStart.call(this, config) : null;
-                  };
-                },
-                get: function() {
-                  return this._customStart || realStart;
-                }
-              });
-            }
-          })();
-
-          // Carrega o player oficial
-          var s=document.createElement("script");
-          s.src="https://scripts.converteai.net/0706df31-bdce-45ab-af22-87ad39c699cd/players/6a8bfa5fe6b8e7f236d8b7fb/v4/player.js";
-          s.async=!0;
-          document.head.appendChild(s);
-        </script>
-
+      <div class="video-inner" style="position:relative;width:100%;max-width:400px;aspect-ratio:1;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.85);background:#000;">
+        <iframe 
+          id="guimaturb-player-frame"
+          src="/player.html?v=https%3A%2F%2Fpub-fdb774497a0f4de3af048a5d75293013.r2.dev%2FBR%2520Frequ%25C3%25AAncia%252033%2520E-mail%2520vazado%2520do%2520Epstein.mp4&smart=1&no_pause=1&resume=1&cta=0&bar_color=%23f5be38&accent=%23f5be38&seek=0&fwd10=0&back10=0"
+          style="width:100%;height:100%;border:0;display:block;"
+          allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+          loading="eager">
+        </iframe>
       </div>
 
       <!-- BOTÃO CTA (Aparece no delay aos 23:29min caso o player não force o dele) -->
@@ -358,29 +328,16 @@
 
   <script>
     // Remove qualquer elemento de headline que o VTurb venha a renderizar no Shadow DOM
-    (function watchShadowHeadline() {
-      function removeShadowHeadline() {
-        var player = document.getElementById("vid-6a8bfa5fe6b8e7f236d8b7fb");
-        if (player && player.shadowRoot) {
-          var h = player.shadowRoot.querySelectorAll(".headline, .headline--image, #vturb-headline-image, [id^='headline_']");
-          h.forEach(function(el) {
-            el.remove();
-          });
-          if (!player.shadowRoot.getElementById("anti-dup-style")) {
-            var st = document.createElement("style");
-            st.id = "anti-dup-style";
-            st.textContent = ".headline, .headline--image, #vturb-headline-image, [id^='headline_'] { display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important; visibility: hidden !important; }";
-            player.shadowRoot.appendChild(st);
-          }
-        }
+    // GuimaTurb nativo ativo
+
+    
+    // GuimaTurb postMessage listener para sincronizar CTA delay com o player
+    window.addEventListener('message', function(e) {
+      if (e.data && (e.data.event === 'cta_shown' || e.data.event === 'cta')) {
+        var btn = document.getElementById('cta-button');
+        if (btn) btn.classList.remove('delay-hidden');
       }
-      var count = 0;
-      var timer = setInterval(function() {
-        removeShadowHeadline();
-        count++;
-        if (count > 60) clearInterval(timer);
-      }, 150);
-    })();
+    });
 
     // Repassa parâmetros de URL (UTMs e SRC)
     window.getParam = function(name) {
