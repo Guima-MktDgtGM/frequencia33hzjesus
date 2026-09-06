@@ -329,36 +329,14 @@
     <!-- 5. ÁREA DO VÍDEO -->
     <div class="video-wrapper">
       <div class="video-inner" style="position:relative;width:100%;max-width:400px;aspect-ratio:1;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.85);background:#000;">
-        <div id="gt-stage" style="position:relative;width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-          
-          <!-- Vídeo Direto Cloudflare R2 -->
-          <video 
-            id="gt-video" 
-            playsinline 
-            webkit-playsinline 
-            preload="auto" 
-            autoplay 
-            muted 
-            disablepictureinpicture 
-            disableremoteplayback
-            style="width:100%;height:100%;object-fit:contain;background:#000;display:block;cursor:pointer;">
-            <source src="https://pub-fdb774497a0f4de3af048a5d75293013.r2.dev/BR%20Frequ%C3%AAncia%2033%20E-mail%20vazado%20do%20Epstein.mp4" type="video/mp4">
-          </video>
-
-          <!-- Overlay Smart Autoplay: Toque para ativar o som -->
-          <div id="gt-unmute" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;background:rgba(0,0,0,0.22);transition:opacity 0.3s;z-index:10;">
-            <div class="gt-pill">
-              <svg viewBox="0 0 24 24" style="width:20px;height:20px;fill:#fff;flex:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1c2.9.9 5 3.5 5 6.7s-2.1 5.8-5 6.7v2.1c4-1 7-4.6 7-8.8s-3-7.8-7-8.8z"/></svg>
-              <span>Toque para ativar o som</span>
-            </div>
-          </div>
-
-          <!-- Barra de Progresso Inteligente GuimaTurb (Dourada) -->
-          <div id="gt-bar" style="position:absolute;left:0;right:0;bottom:0;height:6px;background:rgba(255,255,255,0.24);z-index:8;pointer-events:none;">
-            <div id="gt-fill" style="height:100%;width:0%;background:#f5be38;box-shadow:0 0 10px rgba(245,190,56,0.7);transition:width 0.2s linear;"></div>
-          </div>
-
-        </div>
+        <iframe 
+          src="https://guima-turb.vercel.app/player?c=eyJhY2NlbnQiOiIjZjViZTM4IiwiYmciOiIjMDAwMDAwIiwicmFkaXVzIjowLCJiaWdQbGF5IjoxLCJzbWFsbFBsYXkiOjEsIm5vUGF1c2UiOjEsInNob3dCYXIiOjEsInNob3dUaW1lIjoxLCJiYWNrMTAiOjEsImZ3ZDEwIjoxLCJ2b2x1bWUiOjEsImZ1bGxzY3JlZW4iOjEsInNwZWVkQ3RsIjowLCJwaXAiOjAsInNtYXJ0IjoxLCJiYXJDb2xvciI6IiNmNWJlMzgiLCJiYXJIZWlnaHQiOjUsInNtYXJ0RXhwIjowLjcyLCJhdXRvcGxheSI6MSwibXV0ZVRleHQiOiJUb3F1ZSBwYXJhIGF0aXZhciBvIHNvbSIsIm11dGVIaWRlIjozLCJjdGEiOjEsImN0YVRleHQiOiJRVUVSTyBPVVZJUiBBUyAxNyBGUkVRVcOKTkNJQVMiLCJjdGFVcmwiOiJodHRwczovL3BheS5ob3RtYXJ0LmNvbS9BMTA2NzYzNTM2UT9vZmY9eGtodWcxeTIiLCJjdGFUaW1lIjoxNDA5LCJjdGFDb2xvciI6IiMwOTg5NDAiLCJjdGFTdWIiOiJBY2Vzc28gSW1lZGlhdG8gKyBHYXJhbnRpYSBCbGluZGFkYSIsInJlc3VtZSI6MSwicmVzdW1lTXNnIjoiVm9jw6ogasOhIGVzdGF2YSBhc3Npc3RpbmRvLiBRdWVyIGNvbnRpbnVhciBkZSBvbmRlIHBhcm91PyIsInJlc3VtZUdvIjoiQ29udGludWFyIiwicmVzdW1lUnN0IjoiUmVjb21lw6dhciIsInJlc3VtZUJnIjoiIzBmMTExNyIsInBpeGVsIjoiIiwicGl4ZWxQY3QiOiIyNSw1MCw3NSw5MCIsInNtYXJ0UGF1c2UiOjEsImxvb3AiOjAsInNwZWVkIjoxLCJmc0Rlc2t0b3AiOjAsImZzTW9iaWxlIjowLCJpZCI6ImZyZXEzM2h6Iiwic3JjIjoiaHR0cHM6Ly9wdWItZmRiNzc0NDk3YTBmNGRlM2FmMDQ4YTVkNzUyOTMwMTMucjIuZGV2L0JSJTIwRnJlcXUlQzMlQUFuY2lhJTIwMzMlMjBFLW1haWwlMjB2YXphZG8lMjBkbyUyMEVwc3RlaW4ubXA0IiwicG9zdGVyIjoiIn0" 
+          style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block;" 
+          allow="autoplay; fullscreen; picture-in-picture" 
+          allowfullscreen 
+          scrolling="no" 
+          title="VSL">
+        </iframe>
       </div>
 
       <!-- BOTÃO CTA (Aparece no delay aos 23:29min caso o player não force o dele) -->
@@ -372,68 +350,20 @@
   </main>
 
   <script>
-    (function initGuimaTurbNative() {
-      var v = document.getElementById("gt-video");
-      var unmuteBtn = document.getElementById("gt-unmute");
-      var fill = document.getElementById("gt-fill");
-      var cta = document.getElementById("cta-button");
-      var smartExp = 0.72; // Progresso inteligente GuimaTurb
-      var ctaSeconds = 1409; // 23 minutos e 29 segundos (Pitch Oficial)
-      var ctaShown = false;
-
-      function activateAudio() {
-        if (!v) return;
-        v.muted = false;
-        v.volume = 1;
-        var p = v.play();
-        if (p && p.catch) p.catch(function() {});
-        if (unmuteBtn) unmuteBtn.style.display = "none";
+    // Sincroniza o botão CTA da página quando o GuimaTurb liberar o pitch
+    window.addEventListener('message', function(e) {
+      if (e.data && (e.data.event === 'cta_shown' || e.data.event === 'cta')) {
+        var btn = document.getElementById('cta-button');
+        if (btn) btn.classList.remove('delay-hidden');
       }
+    });
 
-      if (unmuteBtn) {
-        unmuteBtn.addEventListener("click", function(e) {
-          e.stopPropagation();
-          activateAudio();
-        });
-      }
-
-      if (v) {
-        // Bloqueio de Pausa: clicar no vídeo nunca pausa, apenas ativa áudio ou retoma play
-        v.addEventListener("click", function(e) {
-          if (v.muted) {
-            activateAudio();
-          } else if (v.paused) {
-            v.play().catch(function() {});
-          }
-        });
-
-        // Atualização da Barra de Progresso Inteligente & Revelação do CTA
-        v.addEventListener("timeupdate", function() {
-          var d = v.duration || 0;
-          var t = v.currentTime || 0;
-          if (d > 0 && fill) {
-            var raw = Math.min(Math.max(t / d, 0), 1);
-            var smart = Math.pow(raw, smartExp);
-            fill.style.width = (smart * 100) + "%";
-          }
-
-          if (!ctaShown && t >= ctaSeconds) {
-            ctaShown = true;
-            if (cta) cta.classList.remove("delay-hidden");
-          }
-        });
-
-        // Autoplay mutado imediato
-        v.play().catch(function() {
-          // Navegador bloqueou autoplay, aguarda clique
-        });
-      }
-
-      // Delay de segurança do CTA (23:29min = 1409s)
-      setTimeout(function() {
-        if (cta) cta.classList.remove("delay-hidden");
-      }, ctaSeconds * 1000);
-    })();
+    // Delay de segurança do CTA aos 23:29min (1409 segundos)
+    var SECONDS_DELAY = 1409;
+    setTimeout(function() {
+      var btn = document.getElementById('cta-button');
+      if (btn) btn.classList.remove('delay-hidden');
+    }, SECONDS_DELAY * 1000);
 
     // Repassa parâmetros de URL (UTMs e SRC) para os botões de checkout
     (function passUtms() {
