@@ -18,7 +18,7 @@
 
   <!-- ======================================================================= -->
   <!-- [CONFIGURAÇÃO] SEU NOVO PIXEL DO FACEBOOK                               -->
-  <!-- Para ativar, remova os comentários <!-- e --> e insira seu Pixel ID:   -->
+  <!-- Para ativar, descomente o bloco abaixo e insira seu Pixel ID            -->
   <!-- ======================================================================= -->
   <!--
   <script>
@@ -38,7 +38,7 @@
 
   <!-- ======================================================================= -->
   <!-- [CONFIGURAÇÃO] UTMIFY / TRACKING                                        -->
-  <!-- Se desejar usar UTMify na sua conta, insira o seu script aqui:         -->
+  <!-- Se desejar usar UTMify na sua conta, descomente e cole o script abaixo: -->
   <!-- ======================================================================= -->
   <!--
   <script
@@ -135,7 +135,7 @@
       }
     }
 
-    /* 2. Headline Principal */
+    /* 2. Headline Principal (A de CIMA - Mantida com Perfeição) */
     .main-headline {
       font-family: 'Playfair Display', 'Merriweather', Georgia, serif;
       font-size: 32px;
@@ -223,6 +223,28 @@
       position: relative;
     }
 
+    /* ========================================================================== */
+    /* SUPRIME TOTALMENTE O HEADLINE INTERNO DO VTURB (O DE BAIXO)               */
+    /* Mantém unicamente a headline superior original limpa em HTML              */
+    /* ========================================================================== */
+    #vturb-headline-image,
+    .headline--image,
+    .headline-image,
+    .headline,
+    [id*="headline_"],
+    [class*="headline--image"],
+    [id*="vturb-headline"],
+    vturb-smartplayer #vturb-headline-image,
+    vturb-smartplayer .headline--image {
+      display: none !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+
     /* Botão CTA da Oferta */
     .cta-container {
       width: 100%;
@@ -264,25 +286,25 @@
 
   <main class="page-wrapper">
     
-    <!-- TAG SUPERIOR -->
+    <!-- 1. TAG SUPERIOR (MANTIDA) -->
     <div class="top-badge-container">
       <div class="top-badge">FREQUÊNCIA 33 &middot; ÁUDIO ORIGINAL</div>
     </div>
 
-    <!-- HEADLINE PRINCIPAL -->
+    <!-- 2. HEADLINE PRINCIPAL DE CIMA (MANTIDA) -->
     <h1 class="main-headline">
       O e-mail que a <span class="highlight-red">justiça americana</span> liberou em outubro revelou: existe uma frequência que tira a conexão com Deus de bilhões de cristãos por dia &mdash; e <span class="highlight-gold">como neutralizá-la em 5 minutos.</span>
     </h1>
 
-    <!-- DIVISÓRIA BRILHO DOURADO -->
+    <!-- 3. DIVISÓRIA BRILHO DOURADO (MANTIDA) -->
     <div class="gold-divider"></div>
 
-    <!-- SUBHEADLINE / ITÁLICO -->
+    <!-- 4. SUBHEADLINE / ITÁLICO (MANTIDA) -->
     <p class="sub-headline">
       Cientistas confirmam. Padres alertam. E uma câmera secreta do Vaticano guarda o antídoto.
     </p>
 
-    <!-- ÁREA DO VÍDEO (VTURB ORIGINAL PLUGADO) -->
+    <!-- 5. ÁREA DO VÍDEO -->
     <div class="video-wrapper">
       <div class="video-inner">
         
@@ -290,7 +312,32 @@
         <vturb-smartplayer id="vid-6a8bfa5fe6b8e7f236d8b7fb" style="display:block;margin:0 auto;width:100%;max-width:400px">
           <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:100% 0 0;z-index:0;background-color:#000"></div>
         </vturb-smartplayer>
+
         <script type="text/javascript">
+          // Intercepta a configuração do VTurb para desativar a headline interna duplicada (a de baixo)
+          (function() {
+            var playerEl = document.getElementById("vid-6a8bfa5fe6b8e7f236d8b7fb");
+            if (playerEl) {
+              var realStart = null;
+              Object.defineProperty(playerEl, "start", {
+                set: function(fn) {
+                  realStart = fn;
+                  this._customStart = function(config) {
+                    if (config) {
+                      config.headlines = [];
+                      if (config.video) config.video.headlines = [];
+                    }
+                    return realStart ? realStart.call(this, config) : null;
+                  };
+                },
+                get: function() {
+                  return this._customStart || realStart;
+                }
+              });
+            }
+          })();
+
+          // Carrega o player oficial
           var s=document.createElement("script");
           s.src="https://scripts.converteai.net/0706df31-bdce-45ab-af22-87ad39c699cd/players/6a8bfa5fe6b8e7f236d8b7fb/v4/player.js";
           s.async=!0;
@@ -310,6 +357,31 @@
   </main>
 
   <script>
+    // Remove qualquer elemento de headline que o VTurb venha a renderizar no Shadow DOM
+    (function watchShadowHeadline() {
+      function removeShadowHeadline() {
+        var player = document.getElementById("vid-6a8bfa5fe6b8e7f236d8b7fb");
+        if (player && player.shadowRoot) {
+          var h = player.shadowRoot.querySelectorAll(".headline, .headline--image, #vturb-headline-image, [id^='headline_']");
+          h.forEach(function(el) {
+            el.remove();
+          });
+          if (!player.shadowRoot.getElementById("anti-dup-style")) {
+            var st = document.createElement("style");
+            st.id = "anti-dup-style";
+            st.textContent = ".headline, .headline--image, #vturb-headline-image, [id^='headline_'] { display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important; visibility: hidden !important; }";
+            player.shadowRoot.appendChild(st);
+          }
+        }
+      }
+      var count = 0;
+      var timer = setInterval(function() {
+        removeShadowHeadline();
+        count++;
+        if (count > 60) clearInterval(timer);
+      }, 150);
+    })();
+
     // Repassa parâmetros de URL (UTMs e SRC)
     window.getParam = function(name) {
       try {
