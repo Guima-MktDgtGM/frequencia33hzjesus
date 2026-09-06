@@ -48,162 +48,188 @@
   </script>
   -->
 
-  <!-- Fontes -->
+  <!-- Fontes do Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600;700&family=Montserrat:wght@600&family=Poppins:wght@400;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Merriweather:ital,wght@0,400;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --white: #ffffff;
       --bg: #000000;
+      --text: #ffffff;
+      --gold-border: #9b7a38;
+      --gold-text: #dfb752;
+      --gold-glow: #f5c443;
+      --red-highlight: #ff1e1e;
+      --gray-sub: #a8a8a8;
       --btn-green: #098940;
       --btn-hover: #10c57d;
     }
+
     *, ::after, ::before {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     html {
       scroll-behavior: smooth;
       background-color: var(--bg);
     }
+
     body {
       font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       min-height: 100vh;
+      background-color: var(--bg);
+      color: var(--text);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      background-color: var(--bg);
-      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* Estrutura idêntica à Atomicat original */
-    .a-b-cont {
+    /* Container Principal */
+    .page-wrapper {
       width: 100%;
-      min-height: 100vh;
-      background: #000000;
-      overflow: hidden;
-    }
-    .atomicat-container-8f3cbed {
-      min-height: 933px;
-      padding-top: 45px;
-      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 42px 16px 60px 16px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
-    .a-cont-b {
+
+    @media (max-width: 768px) {
+      .page-wrapper {
+        padding: 28px 12px 40px 12px;
+      }
+    }
+
+    /* 1. Tag Superior (Badge) */
+    .top-badge-container {
+      margin-bottom: 22px;
+    }
+
+    .top-badge {
+      display: inline-block;
+      padding: 6px 18px;
+      border: 1px solid var(--gold-border);
+      border-radius: 4px;
+      color: var(--gold-text);
+      font-family: 'Roboto', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: rgba(155, 122, 56, 0.08);
+      box-shadow: 0 0 12px rgba(155, 122, 56, 0.15);
+    }
+
+    @media (max-width: 480px) {
+      .top-badge {
+        font-size: 9.5px;
+        padding: 5px 14px;
+        letter-spacing: 1.5px;
+      }
+    }
+
+    /* 2. Headline Principal */
+    .main-headline {
+      font-family: 'Playfair Display', 'Merriweather', Georgia, serif;
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.34;
+      color: #ffffff;
+      max-width: 840px;
+      margin: 0 auto 16px auto;
+      letter-spacing: -0.2px;
+    }
+
+    .highlight-red {
+      color: var(--red-highlight);
+    }
+
+    .highlight-gold {
+      color: var(--gold-glow);
+    }
+
+    @media (max-width: 768px) {
+      .main-headline {
+        font-size: 22px;
+        line-height: 1.35;
+        margin-bottom: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-headline {
+        font-size: 19px;
+        line-height: 1.36;
+      }
+    }
+
+    /* 3. Divisória Dourada Glow */
+    .gold-divider {
+      width: 180px;
+      height: 1px;
+      margin: 16px auto 14px auto;
+      background: linear-gradient(90deg, transparent, #d4af37, #ffd700, #d4af37, transparent);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+    }
+
+    /* 4. Subheadline em Itálico */
+    .sub-headline {
+      font-family: 'Merriweather', 'Roboto', serif;
+      font-style: italic;
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: var(--gray-sub);
+      max-width: 680px;
+      margin: 0 auto 28px auto;
+    }
+
+    @media (max-width: 768px) {
+      .sub-headline {
+        font-size: 13px;
+        margin-bottom: 24px;
+        padding: 0 8px;
+      }
+    }
+
+    /* 5. Container do Vídeo */
+    .video-wrapper {
       width: 100%;
-      max-width: 1385px;
+      max-width: 400px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    .a-i-cont {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .a-c-cont-4070c00 {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .atomicat-video {
-      width: 100%;
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
-    }
 
-    @media screen and (max-width: 480px) {
-      .atomicat-container-8f3cbed {
-        min-height: 0;
-        padding-top: 25px;
-      }
-      .atomicat-video {
+    @media (max-width: 480px) {
+      .video-wrapper {
         max-width: 100%;
-        padding: 0 8px;
+        padding: 0 4px;
       }
     }
 
-    /* Placeholder visual para quando não houver vídeo plugado */
-    .video-placeholder-box {
+    .video-inner {
       width: 100%;
-      aspect-ratio: 9 / 16;
-      max-height: 710px;
-      background: #0d0d0e;
-      border: 2px dashed #27272a;
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-      box-sizing: border-box;
-      user-select: none;
-      transition: all 0.25s ease;
-    }
-    .video-placeholder-box:hover {
-      border-color: #52525b;
-      background: #131316;
-    }
-    .play-btn-circle {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
-      box-shadow: 0 0 24px rgba(0, 0, 0, 0.6);
-    }
-    .play-btn-circle svg {
-      width: 26px;
-      height: 26px;
-      margin-left: 4px;
-      fill: #ffffff;
-    }
-    .placeholder-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: #fafafa;
-      margin-bottom: 8px;
-    }
-    .placeholder-text {
-      font-size: 13px;
-      line-height: 1.5;
-      color: #71717a;
-      max-width: 290px;
-    }
-    .placeholder-badge {
-      margin-top: 16px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      background: #18181b;
-      border: 1px solid #2e2e33;
-      color: #a1a1aa;
-      padding: 4px 10px;
-      border-radius: 9999px;
+      aspect-ratio: 1;
+      max-width: 400px;
+      margin: 0 auto;
+      position: relative;
     }
 
-    /* Botão CTA da Oferta (Estilo Original da VSL) */
+    /* Botão CTA da Oferta */
     .cta-container {
       width: 100%;
       max-width: 400px;
       margin: 24px auto 0 auto;
       display: flex;
       justify-content: center;
-      /* Por padrão oculto se for usar delay via JS; remova a classe 'delay-hidden' para exibir */
     }
     .delay-hidden {
       display: none;
@@ -236,92 +262,70 @@
 </head>
 <body>
 
-  <div class="a-b-cont">
-    <div class="atomicat-container-8f3cbed">
-      <div class="a-cont-b">
-        <div class="a-i-cont">
-          <div class="a-c-cont-4070c00">
-            <div class="atomicat-video">
+  <main class="page-wrapper">
+    
+    <!-- TAG SUPERIOR -->
+    <div class="top-badge-container">
+      <div class="top-badge">FREQUÊNCIA 33 &middot; ÁUDIO ORIGINAL</div>
+    </div>
 
-              <!-- ========================================================= -->
-              <!-- [ÁREA DO VÍDEO / VSL]                                     -->
-              <!-- Cole seu código embed abaixo. Exemplos práticos:          -->
-              <!-- ========================================================= -->
+    <!-- HEADLINE PRINCIPAL -->
+    <h1 class="main-headline">
+      O e-mail que a <span class="highlight-red">justiça americana</span> liberou em outubro revelou: existe uma frequência que tira a conexão com Deus de bilhões de cristãos por dia &mdash; e <span class="highlight-gold">como neutralizá-la em 5 minutos.</span>
+    </h1>
 
-              <!-- EXEMPLO VTURB (Se for usar VTurb, descomente e preencha):
-              <div style="aspect-ratio:1.77777">
-                <vturb-smartplayer id="vid-SEU_VIDEO_ID" style="display:block;margin:0 auto;width:100%;max-width:400px">
-                  <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:100% 0 0;z-index:0;background-color:#000"></div>
-                </vturb-smartplayer>
-                <script type="text/javascript">
-                  var s=document.createElement("script");
-                  s.src="https://scripts.converteai.net/SEU_USER_ID/players/SEU_VIDEO_ID/v4/player.js";
-                  s.async=!0;
-                  document.head.appendChild(s);
-                </script>
-              </div>
-              -->
+    <!-- DIVISÓRIA BRILHO DOURADO -->
+    <div class="gold-divider"></div>
 
-              <!-- EXEMPLO PANDA VIDEO (Se for usar Panda Video):
-              <div style="position:relative;padding-top:177.77%;width:100%;">
-                <iframe id="panda-player" src="https://player-vz-xxxx.tv.pandavideo.com.br/embed/?v=xxxx" style="border:none;position:absolute;top:0;left:0;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture" allowfullscreen="true" width="100%" height="100%"></iframe>
-              </div>
-              -->
+    <!-- SUBHEADLINE / ITÁLICO -->
+    <p class="sub-headline">
+      Cientistas confirmam. Padres alertam. E uma câmera secreta do Vaticano guarda o antídoto.
+    </p>
 
-              <!-- EXEMPLO YOUTUBE (Se for usar YouTube):
-              <div style="position:relative;padding-top:177.77%;width:100%;">
-                <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID?autoplay=1" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe>
-              </div>
-              -->
+    <!-- ÁREA DO VÍDEO (VTURB ORIGINAL PLUGADO) -->
+    <div class="video-wrapper">
+      <div class="video-inner">
+        
+        <!-- PLAYER VTURB ORIGINAL DA OFERTA -->
+        <vturb-smartplayer id="vid-6a8bfa5fe6b8e7f236d8b7fb" style="display:block;margin:0 auto;width:100%;max-width:400px">
+          <div class="vturb-player-placeholder" style="position:relative;width:100%;padding:100% 0 0;z-index:0;background-color:#000"></div>
+        </vturb-smartplayer>
+        <script type="text/javascript">
+          var s=document.createElement("script");
+          s.src="https://scripts.converteai.net/0706df31-bdce-45ab-af22-87ad39c699cd/players/6a8bfa5fe6b8e7f236d8b7fb/v4/player.js";
+          s.async=!0;
+          document.head.appendChild(s);
+        </script>
 
-              <!-- [PLACEHOLDER ATIVO] Quando colar seu player acima, apague ou comente o bloco abaixo -->
-              <div class="video-placeholder-box" id="video-placeholder">
-                <div class="play-btn-circle">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
-                <div class="placeholder-title">Área do Vídeo (VSL)</div>
-                <div class="placeholder-text">Abra o arquivo <strong>index.html</strong> e cole o código de embed do seu player (VTurb, Panda Video, YouTube, etc.) no local indicado pelos comentários.</div>
-                <span class="placeholder-badge">Placeholder do Vídeo</span>
-              </div>
+      </div>
 
-              <!-- ========================================================= -->
-              <!-- [OPCIONAL] BOTÃO DE CTA EXTERNO                           -->
-              <!-- Se seu player não tiver botão embutido, ative este botão. -->
-              <!-- Link padrão do checkout Hotmart:                          -->
-              <!-- https://pay.hotmart.com/A106763536Q?off=xkhug1y2          -->
-              <!-- ========================================================= -->
-              <div class="cta-container delay-hidden" id="cta-button">
-                <a href="https://pay.hotmart.com/A106763536Q?off=xkhug1y2" class="btn-cta-vsl" target="_blank" rel="noopener">
-                  QUERO OUVIR AS 17 FREQUÊNCIAS
-                </a>
-              </div>
-
-            </div>
-          </div>
-        </div>
+      <!-- BOTÃO CTA (Aparece no delay aos 23:29min caso o player não force o dele) -->
+      <div class="cta-container delay-hidden" id="cta-button">
+        <a href="https://pay.hotmart.com/A106763536Q?off=xkhug1y2" class="btn-cta-vsl" target="_blank" rel="noopener">
+          QUERO OUVIR AS 17 FREQUÊNCIAS
+        </a>
       </div>
     </div>
-  </div>
+
+  </main>
 
   <script>
-    // Utilitário para repassar UTMs e parâmetros de URL
-    window.getUtm = function(param) {
+    // Repassa parâmetros de URL (UTMs e SRC)
+    window.getParam = function(name) {
       try {
-        return new URLSearchParams(window.location.search).get(param) || '';
-      } catch(e) {
-        return '';
+        return new URLSearchParams(window.location.search).get(name) || "";
+      } catch (e) {
+        return "";
       }
     };
 
-    // Caso utilize o botão CTA externo via delay manual (em segundos)
-    // O original usa pitchTime de 1409s (23:29).
-    const SECONDS_DELAY = 1409; 
+    // Delay de segurança do CTA (23 minutos e 29 segundos = 1409s)
+    const SECONDS_DELAY = 1409;
     setTimeout(function() {
       const btn = document.getElementById('cta-button');
       if (btn) btn.classList.remove('delay-hidden');
     }, SECONDS_DELAY * 1000);
   </script>
+
 </body>
 </html>
