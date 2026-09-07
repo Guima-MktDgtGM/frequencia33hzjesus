@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="pt-BR" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Grimório de São Bento</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="theme-color" content="#07090c">
+
+  <style>
+    :root {
+      --bg: #07090c;
+      --paper: #10141a;
+      --ink: #e4e8ee;
+      --ink-soft: #949ca8;
+      --accent: #9fb3c8;
+      --accent-dark: #5d6f82;
+      --line: #1d232c;
+      --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
+      --sans: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    }
+    *, ::after, ::before { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      overflow-x: hidden;
+      max-width: 100%;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.75;
+    }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(7, 9, 12, .94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner {
+      max-width: 720px; margin: 0 auto; padding: 12px 18px;
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+    }
+    .brand {
+      font-family: var(--sans); font-size: 11px; letter-spacing: 2.4px;
+      text-transform: uppercase; color: var(--accent);
+    }
+    .counter { font-family: var(--sans); font-size: 12px; color: var(--ink-soft); white-space: nowrap; }
+    .progress { height: 2px; background: var(--line); }
+    .progress-fill { height: 100%; width: 10%; background: var(--accent); transition: width .3s ease; }
+
+    .sheet { max-width: 720px; margin: 0 auto; padding: 40px 22px 130px; }
+    .page { display: none; animation: rise .32s ease both; }
+    .page.active { display: block; }
+    @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+    .page-num {
+      font-family: var(--sans); font-size: 11px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--accent-dark); margin-bottom: 14px;
+    }
+    h1 { font-size: 34px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+    h2 { font-size: 26px; font-weight: 700; line-height: 1.25; margin-bottom: 20px; }
+    h3 {
+      font-family: var(--sans); font-size: 13px; letter-spacing: 1.6px;
+      text-transform: uppercase; color: var(--accent); margin: 32px 0 12px;
+    }
+    p { margin-bottom: 18px; }
+    .lead { font-size: 19px; }
+    em { color: var(--accent); font-style: italic; }
+    strong { color: #fff; }
+
+    .rule { width: 60px; height: 1px; background: var(--accent-dark); margin: 26px 0; }
+    ol, ul { margin: 0 0 18px 22px; }
+    li { margin-bottom: 10px; }
+
+    .prayer {
+      border-left: 2px solid var(--accent);
+      background: var(--paper);
+      padding: 20px 22px; margin: 26px 0;
+      font-style: italic; font-size: 18px;
+    }
+    .prayer p:last-child { margin-bottom: 0; }
+
+    .latin {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+      padding: 20px 22px; margin: 24px 0;
+    }
+    .latin-line {
+      display: flex; flex-wrap: wrap; gap: 4px 12px;
+      padding: 10px 0; border-bottom: 1px solid var(--line);
+    }
+    .latin-line:last-child { border-bottom: 0; }
+    .letters {
+      font-family: var(--sans); font-weight: 700; font-size: 15px;
+      letter-spacing: 1px; color: var(--accent); min-width: 66px;
+    }
+    .meaning { font-size: 16px; color: var(--ink); flex: 1; min-width: 200px; }
+    .meaning span { display: block; font-size: 14px; color: var(--ink-soft); font-style: italic; }
+
+    .note {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+      padding: 18px 20px; margin: 26px 0;
+      font-family: var(--sans); font-size: 15px; line-height: 1.65; color: var(--ink-soft);
+    }
+    .note strong { color: var(--ink); }
+
+    .alert {
+      background: #131a16; border: 1px solid #3d5c4a; border-radius: 10px;
+      padding: 20px 22px; margin-bottom: 34px;
+      font-family: var(--sans); font-size: 15px; line-height: 1.65; color: #cfe0d6;
+    }
+    .alert-title {
+      display: block; font-weight: 700; letter-spacing: .4px; color: #7fd6a3;
+      margin-bottom: 8px; text-transform: uppercase; font-size: 13px;
+    }
+    .alert p { margin-bottom: 10px; }
+    .alert p:last-child { margin-bottom: 0; }
+
+    .nav {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+      background: rgba(7, 9, 12, .96); backdrop-filter: blur(8px);
+      border-top: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 720px; margin: 0 auto;
+      padding: 12px 18px calc(12px + env(safe-area-inset-bottom));
+      display: flex; align-items: center; gap: 12px;
+    }
+    .nav button {
+      flex: 1; font-family: var(--sans); font-size: 14px; font-weight: 600;
+      padding: 14px 12px; border-radius: 10px; border: 1px solid var(--line);
+      background: var(--paper); color: var(--ink); cursor: pointer;
+      transition: border-color .18s ease, color .18s ease;
+    }
+    .nav button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+    .nav button:disabled { opacity: .32; cursor: default; }
+    .nav button.primary { background: var(--accent); border-color: var(--accent); color: #0b1016; }
+    .nav button.primary:hover { color: #0b1016; }
+
+    .dots { display: flex; gap: 5px; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--line); }
+    .dot.on { background: var(--accent); }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 27px; }
+      h2 { font-size: 22px; }
+      .lead { font-size: 17px; }
+      .sheet { padding: 30px 18px 130px; }
+      .dots { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="brand">Manuscrito Sagrado</span>
+      <span class="counter"><span id="cur">1</span> de 10</span>
+    </div>
+    <div class="progress"><div class="progress-fill" id="bar"></div></div>
+  </header>
+
+  <main class="sheet">
+
+    <!-- 1 -->
+    <article class="page active">
+      <div class="alert">
+        <span class="alert-title">Aviso importante — leia antes de começar</span>
+        <p>Por causa das tentativas de derrubar a nossa página, <strong>os áudios saíram do ar temporariamente</strong>. Eles voltam em breve, e você será avisado assim que forem restabelecidos.</p>
+        <p>Este grimório não depende deles. As orações e bênçãos aqui descritas atravessaram quinze séculos sem nenhuma gravação — foram ditas em voz humana, dentro de casas, e é assim que funcionam.</p>
+      </div>
+
+      <div class="page-num">Página 1 · Abertura</div>
+      <h1>Grimório de São Bento</h1>
+      <p class="lead">Este é um manual de proteção. Não de conquista, não de prosperidade, não de manifestação. Proteção.</p>
+      <div class="rule"></div>
+      <p>Há uma diferença que a maioria das pessoas nunca aprendeu: <strong>o que se conquista sem estar protegido, não se conserva.</strong></p>
+      <p>É a explicação para uma história que se repete. A pessoa consegue o emprego e adoece. Consegue o dinheiro e a família racha. Consegue a paz e ela dura três semanas. Não é azar, e não é castigo. É casa sem porta.</p>
+      <p>Bento de Núrsia entendeu isso melhor do que quase todo mundo na história cristã. Ele não construiu mosteiros para produzir. Construiu para <em>guardar</em>. E a regra que escreveu no século VI é, até hoje, um dos textos mais imitados do Ocidente — não por ser inspirador, mas por ser <strong>prático</strong>.</p>
+      <p>Este grimório segue esse espírito. Você não vai encontrar aqui nada que não possa fazer amanhã de manhã, com o que já tem em casa.</p>
+      <div class="note">
+        <strong>Como usar.</strong> São dez páginas, e elas se acumulam: cada uma acrescenta uma camada de proteção à anterior. Leia uma por dia e pratique antes de avançar. No sétimo dia você já terá a casa inteira coberta.
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="page">
+      <div class="page-num">Página 2 · A origem</div>
+      <h2>O corvo e o veneno</h2>
+      <p>A força desta devoção vem de um episódio muito concreto, registrado por São Gregório Magno cerca de cinquenta anos depois de acontecer.</p>
+      <p>Bento havia sido chamado para dirigir uma comunidade de monges relaxados. Ele aceitou. Impôs disciplina. E eles decidiram matá-lo.</p>
+      <p>Serviram-lhe vinho envenenado. Antes de beber, Bento fez sobre a taça o gesto que fazia sobre tudo — o sinal da cruz. <strong>A taça se partiu.</strong></p>
+      <p>Depois vieram com um pão envenenado. Um corvo o carregou para longe, a mando dele.</p>
+      <h3>Por que isso importa para você</h3>
+      <p>O detalhe decisivo da história não é o milagre. É o <em>hábito</em>.</p>
+      <p>Bento não fez a cruz porque suspeitou do vinho. Ele fez porque fazia sempre, sobre tudo, todos os dias. A proteção não foi convocada na hora do perigo — ela já estava instalada, e o perigo esbarrou nela.</p>
+      <p>É isso que este grimório ensina. Não uma oração de emergência para quando o mal chega. Um conjunto de gestos diários para que, quando ele chegar, encontre a porta já fechada.</p>
+      <div class="note">
+        <strong>Hoje.</strong> Faça o sinal da cruz sobre a primeira coisa que você for comer ou beber amanhã. Sem plateia, sem explicação. Só o gesto. É o primeiro tijolo.
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="page">
+      <div class="page-num">Página 3 · A Cruz</div>
+      <h2>As letras da haste</h2>
+      <p>Na Cruz de São Bento existem letras que quase ninguém sabe ler. Elas não são símbolos ocultos: são as <strong>iniciais de duas frases em latim</strong>, e conhecê-las muda completamente o peso do objeto na sua mão.</p>
+      <p>Na haste vertical e na horizontal da cruz, lê-se:</p>
+      <div class="latin">
+        <div class="latin-line">
+          <span class="letters">C S S M L</span>
+          <span class="meaning">Crux Sacra Sit Mihi Lux
+            <span>Que a Cruz Sagrada seja a minha luz</span>
+          </span>
+        </div>
+        <div class="latin-line">
+          <span class="letters">N D S M D</span>
+          <span class="meaning">Non Draco Sit Mihi Dux
+            <span>Que o dragão não seja o meu guia</span>
+          </span>
+        </div>
+      </div>
+      <h3>A segunda linha é a mais importante</h3>
+      <p>Repare no que ela <em>não</em> diz. Não diz "que o dragão não exista". Não diz "que o dragão vá embora".</p>
+      <p>Diz: <strong>que ele não seja o meu guia.</strong></p>
+      <p>Essa é a teologia inteira em cinco palavras. O mal raramente aparece como ataque frontal — ele aparece como <em>sugestão</em>. Como o pensamento que parece seu. Como a certeza de que não vai dar certo. Como a voz que diz que você já tentou e falhou.</p>
+      <p>Ele não te derruba. Ele te <strong>conduz</strong>. E a oração pede exatamente que essa condução seja quebrada.</p>
+      <div class="note">
+        <strong>Hoje.</strong> Diga as duas frases em voz alta, uma vez, em português. Depois pergunte a si mesmo, com honestidade: em que assunto da minha vida eu venho sendo guiado pelo medo?
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="page">
+      <div class="page-num">Página 4 · A Cruz</div>
+      <h2>As letras da borda</h2>
+      <p>Ao redor da cruz corre a segunda inscrição, que é a mais direta de todas — quase uma expulsão dita em voz alta:</p>
+      <div class="latin">
+        <div class="latin-line">
+          <span class="letters">V R S</span>
+          <span class="meaning">Vade Retro Satana
+            <span>Afasta-te, Satanás</span>
+          </span>
+        </div>
+        <div class="latin-line">
+          <span class="letters">N S M V</span>
+          <span class="meaning">Nunquam Suade Mihi Vana
+            <span>Nunca me aconselhes coisas vãs</span>
+          </span>
+        </div>
+        <div class="latin-line">
+          <span class="letters">S M Q L</span>
+          <span class="meaning">Sunt Mala Quae Libas
+            <span>É mau o que me ofereces</span>
+          </span>
+        </div>
+        <div class="latin-line">
+          <span class="letters">I V B</span>
+          <span class="meaning">Ipse Venena Bibas
+            <span>Bebe tu mesmo o teu veneno</span>
+          </span>
+        </div>
+      </div>
+      <p>E no alto da cruz, uma única palavra: <strong>PAX</strong>. Paz.</p>
+      <h3>A ordem não é acidental</h3>
+      <p>Leia de novo, na sequência. Primeiro <em>afasta-te</em> — a ordem de saída. Depois <em>nunca me aconselhes</em> — o corte da conversa, que é por onde ele entra. Depois <em>é mau o que me ofereces</em> — o reconhecimento de que havia uma oferta, e que ela parecia boa. Por último, a devolução: <em>bebe tu mesmo o teu veneno</em>.</p>
+      <p>E só então, no topo, PAX. A paz não vem antes da expulsão. Vem depois. Quem procura paz sem expulsar nada, encontra apenas anestesia.</p>
+      <div class="note">
+        <strong>Hoje.</strong> Decore as quatro palavras iniciais: <em>Vade Retro Satana</em>. É a frase que você vai usar nos momentos em que não houver tempo para nada mais longo.
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="page">
+      <div class="page-num">Página 5 · O objeto</div>
+      <h2>A medalha e o seu uso</h2>
+      <p>A medalha de São Bento é um sacramental — não um amuleto. A diferença é grande e ignorá-la é o erro mais comum de quem começa.</p>
+      <p><strong>Amuleto</strong> age sozinho: você o carrega e ele trabalha por você, independentemente de quem você é. <strong>Sacramental</strong> não age sozinho: ele acompanha a oração, e sem a oração é metal.</p>
+      <p>Quem usa a medalha como amuleto se decepciona em poucas semanas. Quem usa como lembrete e como âncora de oração, não.</p>
+      <h3>Os quatro lugares</h3>
+      <ul>
+        <li><strong>No corpo.</strong> No pescoço, no bolso, na carteira. O ponto é o toque: quando a mão encontra o metal, a mente lembra da frase. Esse é o mecanismo inteiro.</li>
+        <li><strong>Na porta de entrada.</strong> Acima do batente, do lado de dentro. É a fronteira da casa, e toda fronteira precisa de marca.</li>
+        <li><strong>Na cabeceira.</strong> O sono é a hora em que a vigilância cai, e é por isso que a página 9 trata só disso.</li>
+        <li><strong>Onde o dinheiro passa.</strong> Na gaveta do caixa, na carteira, junto aos documentos. Não para atrair — para guardar o que entra.</li>
+      </ul>
+      <div class="note">
+        <strong>Se você não tem a medalha.</strong> Não pare por isso. Escreva as letras <strong>CSSML NDSMD — VRS NSMV SMQL IVB</strong> num papel pequeno e use o papel nos mesmos quatro lugares. Foram as palavras que sempre carregaram a força; o metal apenas as guarda.
+      </div>
+    </article>
+
+    <!-- 6 -->
+    <article class="page">
+      <div class="page-num">Página 6 · A oração</div>
+      <h2>A oração de proteção</h2>
+      <p>Esta é a oração central do grimório. Reze-a uma vez por dia, de preferência de manhã, antes de sair.</p>
+      <div class="prayer">
+        <p>Que a Cruz Sagrada seja a minha luz,<br>
+        e que o dragão não seja o meu guia.</p>
+        <p>Afasta-te, Satanás.<br>
+        Nunca me aconselhes coisas vãs.<br>
+        É mau o que me ofereces.<br>
+        Bebe tu mesmo o teu veneno.</p>
+        <p>São Bento, que partiste a taça envenenada<br>
+        com um único gesto e sem uma única palavra de ódio:<br>
+        guarda a minha porta, a minha mesa e o meu sono.<br>
+        Que tudo o que entrar nesta casa<br>
+        entre debaixo da cruz, ou não entre.</p>
+        <p>Pax. Amém.</p>
+      </div>
+      <h3>Uma advertência</h3>
+      <p>Note que a oração pede a Bento que <em>guarde</em>, e não que ataque. Isto não é detalhe de estilo.</p>
+      <p>A devoção de proteção se corrompe no momento em que vira arma contra pessoas. Quando alguém começa a rezar contra um vizinho, contra a ex-mulher, contra o colega de trabalho, saiu da proteção e entrou em outra coisa — que a tradição sempre condenou, e com razão.</p>
+      <p><strong>Você reza pela sua casa. Nunca contra a casa dos outros.</strong> Guarde essa regra: é ela que mantém esta prática limpa.</p>
+    </article>
+
+    <!-- 7 -->
+    <article class="page">
+      <div class="page-num">Página 7 · A casa</div>
+      <h2>A bênção dos quatro cantos</h2>
+      <p>Esta é a prática mais antiga deste grimório e a que produz o efeito mais rapidamente percebido pelas pessoas que moram com você — mesmo sem elas saberem que foi feita.</p>
+      <p>Faz-se uma única vez, e repete-se apenas quando a casa muda ou quando algo pesado aconteceu dentro dela.</p>
+      <h3>O rito</h3>
+      <ol>
+        <li><strong>Escolha a hora vazia.</strong> Cedo, ou tarde da noite. Você precisa estar sozinho e sem pressa.</li>
+        <li><strong>Comece pelo canto mais à esquerda da porta de entrada</strong> e caminhe pela casa sempre no mesmo sentido, sem voltar atrás. Passe por todos os cômodos, inclusive banheiro e área de serviço.</li>
+        <li><strong>Em cada canto, faça o sinal da cruz</strong> e diga: <em>"Que a Cruz Sagrada seja a luz deste canto. Que o dragão não seja o guia desta casa."</em></li>
+        <li><strong>Termine onde começou</strong>, de volta à porta de entrada. Feche o círculo.</li>
+        <li><strong>Na porta, reze a oração completa</strong> da página 6, inteira, em voz alta.</li>
+      </ol>
+      <h3>O que não fazer</h3>
+      <p>Não faça com pressa, não faça com raiva e não faça mostrando para os outros. Pressa quebra a atenção, raiva troca o objetivo e plateia transforma oração em espetáculo.</p>
+      <div class="note">
+        <strong>Hoje.</strong> Se a casa for grande, faça um cômodo por dia até completar. O rito aceita ser dividido; não aceita ser feito pela metade.
+      </div>
+    </article>
+
+    <!-- 8 -->
+    <article class="page">
+      <div class="page-num">Página 8 · O limiar</div>
+      <h2>A porta</h2>
+      <p>De tudo neste grimório, a porta é o ponto mais importante — e o mais negligenciado.</p>
+      <p>A porta é o único lugar da casa por onde passa <strong>tudo</strong>: as pessoas, as notícias, as discussões trazidas da rua, o cansaço do dia, as visitas que você não escolheu. É a fronteira, e fronteira sem guarda não é fronteira.</p>
+      <h3>A marca</h3>
+      <p>Coloque a medalha — ou o papel com as letras — acima do batente, pelo lado de dentro. Não precisa aparecer. A tradição nunca exigiu ostentação; exigiu presença.</p>
+      <h3>O gesto diário</h3>
+      <p>Este é o hábito que substitui todos os outros nos dias em que você não tiver tempo para nada:</p>
+      <div class="prayer">
+        <p>Ao sair, com a mão na maçaneta:<br>
+        <strong>"Saio debaixo da cruz."</strong></p>
+        <p>Ao voltar, antes de fechar a porta:<br>
+        <strong>"Entro debaixo da cruz, e o que vinha atrás fica de fora."</strong></p>
+      </div>
+      <p>Sete palavras na saída, catorze na volta. Ninguém é ocupado demais para isso.</p>
+      <p>A segunda frase faz um trabalho que você vai notar em poucos dias: ela obriga você a <em>reparar</em> no que está trazendo para dentro de casa. E muita coisa que vinha entrando com você entrava só porque ninguém a estava olhando.</p>
+      <div class="note">
+        <strong>Hoje.</strong> Instale a marca acima do batente e comece pelo gesto da volta — é o que produz efeito mais rápido, porque é o momento em que a casa costuma ser invadida.
+      </div>
+    </article>
+
+    <!-- 9 -->
+    <article class="page">
+      <div class="page-num">Página 9 · O sono</div>
+      <h2>A guarda da noite</h2>
+      <p>O sono é a hora em que a vigilância cai. Não por fraqueza espiritual — por biologia. E a tradição monástica, que acordava para rezar de madrugada, sempre tratou a noite como território que precisa ser entregue de propósito, e não simplesmente perdido.</p>
+      <h3>Os três gestos antes de deitar</h3>
+      <ol>
+        <li><strong>Encerre o dia em voz alta.</strong> Uma frase só: <em>"Este dia acabou, com o que teve de bom e com o que teve de errado. Não levo nada dele para a cama."</em></li>
+        <li><strong>Sinal da cruz sobre a cama.</strong> Sobre ela, não sobre você. Você está abençoando o lugar onde vai ficar indefeso pelas próximas horas.</li>
+        <li><strong>A oração curta.</strong> Abaixo.</li>
+      </ol>
+      <div class="prayer">
+        <p>São Bento, guarda o meu sono.<br>
+        Que nada entre por sonho o que não pôde entrar por porta.<br>
+        Que a Cruz Sagrada seja a minha luz<br>
+        também no escuro.<br>
+        Pax. Amém.</p>
+      </div>
+      <h3>Se você acordar de madrugada</h3>
+      <p>Vai acontecer, e muita gente entra em pânico nessa hora. Não faça oração longa, não acenda a luz e não pegue o celular — a tela é o que vai roubar as próximas duas horas do seu sono.</p>
+      <p>Diga apenas, em pensamento: <strong>Vade retro. Pax.</strong> E volte a deitar. Três palavras. É suficiente, e a brevidade faz parte do remédio.</p>
+    </article>
+
+    <!-- 10 -->
+    <article class="page">
+      <div class="page-num">Página 10 · Encerramento</div>
+      <h2>Os sete dias e o selo</h2>
+      <p>Você tem agora todas as camadas. Esta última página as organiza numa semana.</p>
+      <h3>A semana</h3>
+      <ul>
+        <li><strong>Dia 1 —</strong> O sinal da cruz sobre o alimento (página 2).</li>
+        <li><strong>Dia 2 —</strong> As frases da haste, ditas em voz alta (página 3).</li>
+        <li><strong>Dia 3 —</strong> <em>Vade Retro Satana</em> decorado (página 4).</li>
+        <li><strong>Dia 4 —</strong> A medalha ou o papel nos quatro lugares (página 5).</li>
+        <li><strong>Dia 5 —</strong> A oração completa, de manhã (página 6).</li>
+        <li><strong>Dia 6 —</strong> A bênção dos quatro cantos (página 7).</li>
+        <li><strong>Dia 7 —</strong> A marca na porta e os dois gestos do limiar (página 8). A guarda da noite (página 9) começa hoje e não termina mais.</li>
+      </ul>
+      <h3>O selo</h3>
+      <p>No sétimo dia, de pé diante da porta de entrada, com a casa já toda abençoada, diga:</p>
+      <div class="prayer">
+        <p>Esta casa tem porta, e a porta tem guarda.<br>
+        O que for de Deus, entre e fique.<br>
+        O que não for, não entra —<br>
+        e o que já estava dentro, sai agora.</p>
+        <p>Crux Sacra Sit Mihi Lux.<br>
+        Non Draco Sit Mihi Dux.<br>
+        Pax. Amém.</p>
+      </div>
+      <p>Depois disso, o grimório termina e a rotina começa. Ficam apenas quatro coisas para a vida inteira: a cruz sobre o alimento, a oração da manhã, os dois gestos da porta e a guarda da noite.</p>
+      <p>Quatro hábitos. Nenhum deles leva mais de trinta segundos. Foi assim que se protegeu casa cristã por quinze séculos, e continua sendo.</p>
+      <div class="note">
+        <strong>Lembrete.</strong> Assim que os áudios voltarem ao ar, você será avisado. Até lá, tudo o que está descrito aqui funciona exatamente como está — estas orações existiram por séculos antes de existir qualquer gravação.
+      </div>
+    </article>
+
+  </main>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <button id="prev" type="button">← Anterior</button>
+      <div class="dots" id="dots"></div>
+      <button id="next" type="button" class="primary">Próxima →</button>
+    </div>
+  </nav>
+
+  <script>
+    (function () {
+      var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+      var total = pages.length;
+      var i = 0;
+      var prev = document.getElementById('prev');
+      var next = document.getElementById('next');
+      var cur = document.getElementById('cur');
+      var bar = document.getElementById('bar');
+      var dots = document.getElementById('dots');
+
+      pages.forEach(function (_, n) {
+        var d = document.createElement('span');
+        d.className = 'dot' + (n === 0 ? ' on' : '');
+        dots.appendChild(d);
+      });
+      var dotEls = dots.children;
+
+      function show(n) {
+        i = Math.max(0, Math.min(total - 1, n));
+        pages.forEach(function (p, k) { p.classList.toggle('active', k === i); });
+        for (var k = 0; k < dotEls.length; k++) dotEls[k].className = 'dot' + (k === i ? ' on' : '');
+        cur.textContent = i + 1;
+        bar.style.width = ((i + 1) / total * 100) + '%';
+        prev.disabled = i === 0;
+        next.textContent = i === total - 1 ? 'Recomeçar' : 'Próxima →';
+        window.scrollTo(0, 0);
+        try { localStorage.setItem('grimorio-bento-pg', String(i)); } catch (e) {}
+      }
+
+      prev.addEventListener('click', function () { show(i - 1); });
+      next.addEventListener('click', function () { show(i === total - 1 ? 0 : i + 1); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') show(i - 1);
+        if (e.key === 'ArrowRight') show(i + 1);
+      });
+
+      var x0 = null, y0 = null;
+      document.addEventListener('touchstart', function (e) {
+        x0 = e.changedTouches[0].clientX; y0 = e.changedTouches[0].clientY;
+      }, { passive: true });
+      document.addEventListener('touchend', function (e) {
+        if (x0 === null) return;
+        var dx = e.changedTouches[0].clientX - x0;
+        var dy = e.changedTouches[0].clientY - y0;
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? i + 1 : i - 1);
+        x0 = null; y0 = null;
+      }, { passive: true });
+
+      var saved = null;
+      try { saved = localStorage.getItem('grimorio-bento-pg'); } catch (e) {}
+      show(saved ? parseInt(saved, 10) || 0 : 0);
+    })();
+  </script>
+
+</body>
+</html>
