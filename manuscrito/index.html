@@ -41,7 +41,11 @@
       --sans: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
     }
     *, ::after, ::before { margin: 0; padding: 0; box-sizing: border-box; }
+    /* Trava a rolagem lateral: a pagina so rola na vertical. */
+    html { overflow-x: hidden; }
     body {
+      overflow-x: hidden;
+      max-width: 100%;
       background: var(--light);
       font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
@@ -152,7 +156,9 @@
       cursor: pointer;
     }
 
-    .product-shot { margin: 26px auto 0; max-width: 520px; }
+    /* width:100% junto com max-width: sem o width a regra de classe vence o
+       img{max-width:100%} e a imagem trava em 520px, estourando telas menores. */
+    .product-shot { width: 100%; max-width: 520px; margin: 26px auto 0; }
 
     @media (max-width: 600px) {
       h1.headline { font-size: 30px; }
