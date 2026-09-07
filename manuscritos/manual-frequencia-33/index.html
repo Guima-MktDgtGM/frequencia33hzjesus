@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="pt-BR" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Manual da Frequência 33</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="theme-color" content="#08080a">
+
+  <style>
+    :root {
+      --bg: #08080a;
+      --paper: #131318;
+      --ink: #f0ece3;
+      --ink-soft: #a9a294;
+      --gold: #f5c443;
+      --gold-mid: #c9a227;
+      --gold-soft: #8a7220;
+      --line: #26262e;
+      --green: #4ade80;
+      --red: #ff6b6b;
+      --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
+      --sans: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    }
+    *, ::after, ::before { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; }
+    body {
+      background: var(--bg); color: var(--ink); font-family: var(--serif);
+      overflow-x: hidden; max-width: 100%;
+      -webkit-font-smoothing: antialiased; line-height: 1.75;
+    }
+    .sheet { max-width: 760px; margin: 0 auto; padding: 54px 22px 90px; }
+
+    .cover { text-align: center; padding-bottom: 40px; border-bottom: 1px solid var(--line); margin-bottom: 44px; }
+    .kicker {
+      font-family: var(--sans); font-size: 11px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+    }
+    h1 { font-size: 44px; font-weight: 700; line-height: 1.1; margin-bottom: 14px; }
+    .subtitle { font-size: 19px; color: var(--ink-soft); font-style: italic; }
+
+    .toc { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 26px 28px; margin-bottom: 50px; }
+    .toc h4 {
+      font-family: var(--sans); font-size: 12px; letter-spacing: 2px; font-weight: 700;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .toc ol { margin: 0 0 0 20px; }
+    .toc li { margin-bottom: 8px; }
+    .toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; }
+    .toc a:hover { border-bottom-color: var(--gold); }
+
+    .chapter { margin-bottom: 58px; }
+    .chapter-num {
+      font-family: var(--sans); font-size: 11px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold-soft); margin-bottom: 12px;
+    }
+    h2 { font-size: 30px; font-weight: 700; line-height: 1.2; margin-bottom: 22px; }
+    h3 {
+      font-family: var(--sans); font-size: 13px; letter-spacing: 1.6px;
+      text-transform: uppercase; color: var(--gold); margin: 34px 0 12px;
+    }
+    p { margin-bottom: 18px; }
+    .lead { font-size: 19px; }
+    em { color: var(--gold); font-style: italic; }
+    strong { color: #fff; }
+    .rule { width: 60px; height: 1px; background: var(--gold-soft); margin: 26px auto; }
+    ol, ul { margin: 0 0 18px 22px; }
+    li { margin-bottom: 10px; }
+
+    /* Passos do ritual */
+    .step {
+      display: flex; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--line);
+    }
+    .step:last-child { border-bottom: 0; }
+    .step-n {
+      flex: 0 0 46px; height: 46px; border-radius: 50%;
+      border: 1px solid var(--gold-mid); color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--sans); font-weight: 700; font-size: 17px;
+    }
+    .step-body { flex: 1; }
+    .step-body h4 {
+      font-size: 20px; margin-bottom: 6px;
+    }
+    .step-time {
+      font-family: var(--sans); font-size: 12px; letter-spacing: 1.4px;
+      text-transform: uppercase; color: var(--gold-soft); margin-bottom: 10px;
+    }
+    .step-body p:last-child { margin-bottom: 0; }
+
+    /* Tabela das frequencias */
+    .freq-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+    .freq-table th {
+      font-family: var(--sans); font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase;
+      color: var(--gold); text-align: left; padding: 10px 10px 10px 0;
+      border-bottom: 1px solid var(--gold-soft);
+    }
+    .freq-table td { padding: 11px 10px 11px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .freq-table td:first-child {
+      font-family: var(--sans); font-weight: 700; color: var(--gold); width: 34px;
+    }
+    .freq-table td:nth-child(2) { color: #fff; font-weight: 600; }
+    .freq-table td:last-child { color: var(--ink-soft); }
+
+    .prayer {
+      border-left: 2px solid var(--gold-mid); background: var(--paper);
+      padding: 20px 22px; margin: 26px 0; font-style: italic; font-size: 18px;
+    }
+    .prayer p:last-child { margin-bottom: 0; }
+
+    .note {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+      padding: 18px 20px; margin: 26px 0;
+      font-family: var(--sans); font-size: 15px; line-height: 1.65; color: var(--ink-soft);
+    }
+    .note strong { color: var(--ink); }
+
+    .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 26px 0; }
+    .box { border-radius: 10px; padding: 18px 20px; font-family: var(--sans); font-size: 15px; line-height: 1.6; }
+    .box h5 {
+      font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase;
+      margin-bottom: 10px; font-weight: 700;
+    }
+    .box ul { margin: 0 0 0 18px; }
+    .box li { margin-bottom: 7px; }
+    .do { background: #0f1a12; border: 1px solid #2f5c3f; color: #cfe6d6; }
+    .do h5 { color: var(--green); }
+    .dont { background: #1c1010; border: 1px solid #5c2f2f; color: #e6cfcf; }
+    .dont h5 { color: var(--red); }
+
+    .faq { border-bottom: 1px solid var(--line); padding: 18px 0; }
+    .faq:last-child { border-bottom: 0; }
+    .faq h4 { font-size: 19px; margin-bottom: 8px; color: #fff; }
+    .faq p:last-child { margin-bottom: 0; }
+
+    .alert {
+      background: #1a1206; border: 1px solid var(--gold-soft); border-radius: 10px;
+      padding: 22px 24px; margin-bottom: 44px;
+      font-family: var(--sans); font-size: 15px; line-height: 1.65; color: #e8dcbb;
+    }
+    .alert-title {
+      display: block; font-weight: 700; letter-spacing: .4px; color: var(--gold);
+      margin-bottom: 8px; text-transform: uppercase; font-size: 13px;
+    }
+    .alert p { margin-bottom: 10px; }
+    .alert p:last-child { margin-bottom: 0; }
+
+    .end { text-align: center; color: var(--gold-soft); font-size: 22px; letter-spacing: 8px; margin-top: 20px; }
+
+    .print-hint {
+      position: fixed; right: 16px; bottom: 16px; z-index: 30;
+      font-family: var(--sans); font-size: 13px; font-weight: 600;
+      background: var(--gold); color: #17130a; border: 0;
+      padding: 12px 18px; border-radius: 999px; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,0,0,.5);
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 31px; }
+      h2 { font-size: 24px; }
+      .lead { font-size: 17px; }
+      .sheet { padding: 36px 18px 80px; }
+      .do-dont { grid-template-columns: 1fr; }
+      .freq-table { font-size: 14px; }
+      .step { gap: 13px; }
+      .step-n { flex-basis: 38px; height: 38px; font-size: 15px; }
+    }
+
+    /* ===================== IMPRESSAO / PDF ===================== */
+    @media print {
+      @page { size: A4; margin: 18mm 16mm; }
+      html, body { background: #fff !important; color: #14110c !important; font-size: 11pt; line-height: 1.55; }
+      .print-hint { display: none !important; }
+      .sheet { max-width: none; padding: 0; }
+
+      .cover { border-bottom: 1px solid #c9a227; page-break-after: always; padding: 58mm 0 40px; }
+      h1 { font-size: 30pt; color: #14110c !important; }
+      .kicker, .chapter-num, h3 { color: #8a7220 !important; }
+      .subtitle { color: #4a4438 !important; }
+
+      .toc { page-break-after: always; background: none; border: 1px solid #d8d2c4; }
+      .toc a { color: #14110c !important; }
+
+      .chapter { page-break-before: always; margin-bottom: 0; }
+      .chapter:first-of-type { page-break-before: avoid; }
+      h2 { font-size: 18pt; color: #14110c !important; page-break-after: avoid; }
+      h3 { page-break-after: avoid; }
+      p, li { orphans: 3; widows: 3; }
+      em { color: #8a7220 !important; }
+      strong { color: #000 !important; }
+
+      .step { border-bottom: 1px solid #ddd7c9; page-break-inside: avoid; }
+      .step-n { border-color: #8a7220; color: #8a7220 !important; }
+      .step-time { color: #8a7220 !important; }
+
+      .freq-table { page-break-inside: auto; }
+      .freq-table th { color: #8a7220 !important; border-bottom: 1px solid #8a7220; }
+      .freq-table td { border-bottom: 1px solid #e2ddd1; page-break-inside: avoid; }
+      .freq-table td:first-child { color: #8a7220 !important; }
+      .freq-table td:nth-child(2) { color: #14110c !important; }
+      .freq-table td:last-child { color: #4a4438 !important; }
+
+      .prayer { background: #faf7ef !important; border-left: 3px solid #c9a227; color: #14110c !important; page-break-inside: avoid; }
+      .note { background: #f4f2ec !important; border: 1px solid #d8d2c4; color: #3d382e !important; page-break-inside: avoid; }
+      .note strong { color: #14110c !important; }
+      .alert { background: #fdf8e8 !important; border: 1px solid #c9a227; color: #3d3524 !important; page-break-inside: avoid; }
+      .alert-title { color: #8a7220 !important; }
+      .alert strong { color: #14110c !important; }
+
+      .do-dont { page-break-inside: avoid; }
+      .do { background: #f0f7f2 !important; border: 1px solid #6b9c7d; color: #22402e !important; }
+      .do h5 { color: #2f6144 !important; }
+      .dont { background: #fdf1f1 !important; border: 1px solid #b58080; color: #482626 !important; }
+      .dont h5 { color: #8f3535 !important; }
+
+      .faq { border-bottom: 1px solid #e2ddd1; page-break-inside: avoid; }
+      .faq h4 { color: #14110c !important; }
+      .rule { background: #c9a227; }
+      .end { color: #8a7220 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="sheet">
+
+    <header class="cover">
+      <div class="kicker">Manual Oficial de Uso</div>
+      <h1>Frequência 33</h1>
+      <p class="subtitle">As 17 frequências, o ritual dos 4 passos e o protocolo de 7 dias</p>
+    </header>
+
+    <div class="alert">
+      <span class="alert-title">Aviso importante — leia antes de começar</span>
+      <p>Por causa das tentativas de derrubar a nossa página, <strong>parte dos áudios saiu do ar temporariamente</strong>. Eles voltam em breve, e você será avisado assim que forem restabelecidos.</p>
+      <p>Isso não atrasa a sua prática. Este manual traz o ritual completo, as orações e o protocolo dos 7 dias — e a partir da primeira frequência disponível você já pode começar hoje, exatamente como está descrito aqui.</p>
+    </div>
+
+    <nav class="toc">
+      <h4>Neste manual</h4>
+      <ol>
+        <li><a href="#c1">O que você recebeu</a></li>
+        <li><a href="#c2">Por que 33 — a explicação simples</a></li>
+        <li><a href="#c3">As 17 frequências e para que serve cada uma</a></li>
+        <li><a href="#c4">O ritual dos 4 passos (5 min 15 s)</a></li>
+        <li><a href="#c5">As orações</a></li>
+        <li><a href="#c6">O protocolo dos 7 dias</a></li>
+        <li><a href="#c7">O que esperar — e o que não esperar</a></li>
+        <li><a href="#c8">Os cinco erros que anulam a frequência</a></li>
+        <li><a href="#c9">Perguntas frequentes</a></li>
+        <li><a href="#c10">Depois dos 7 dias</a></li>
+      </ol>
+    </nav>
+
+    <section class="chapter" id="c1">
+      <div class="chapter-num">Capítulo 1</div>
+      <h2>O que você recebeu</h2>
+      <p class="lead">Antes de qualquer coisa: você não comprou um arquivo de áudio. Você comprou um <em>método</em>, e o áudio é uma das peças dele.</p>
+      <div class="rule"></div>
+      <p>Essa distinção decide o resultado. Quem baixa, ouve uma vez de qualquer jeito e espera que algo aconteça, não vai conseguir nada — e a culpa não é da frequência, é do uso. Quem cumpre o ritual dos quatro passos, mesmo que por cinco minutos, começa a perceber diferença dentro da primeira semana.</p>
+      <h3>O que está no seu acesso</h3>
+      <ul>
+        <li><strong>As 17 Frequências 33 Hz.</strong> A frequência original e as dezesseis aplicações, cada uma para uma área específica da sua vida. O índice completo está no capítulo 3.</li>
+        <li><strong>Este manual.</strong> O ritual, as orações e o protocolo. É a peça que faz as outras funcionarem.</li>
+        <li><strong>A Oração Divina de Um Minuto.</strong> No capítulo 5. É a que você usa quando não tem tempo para mais nada.</li>
+        <li><strong>O Círculo Fechado.</strong> O grupo privado de quem tem acesso, com oração da manhã e da noite.</li>
+      </ul>
+      <div class="note">
+        <strong>Faça isto agora, antes de continuar lendo:</strong> baixe os áudios para o seu celular. Não os deixe apenas no navegador. A prática acontece de manhã, muitas vezes antes de você abrir qualquer aplicativo, e depender de internet nessa hora é o motivo número um de gente que desiste no terceiro dia.
+      </div>
+    </section>
+
+    <section class="chapter" id="c2">
+      <div class="chapter-num">Capítulo 2</div>
+      <h2>Por que 33 — a explicação simples</h2>
+      <p>O cérebro humano opera em faixas. A mais baixa é a delta, do sono profundo. Acima dela vêm teta, alfa e beta — e beta é onde você passa o dia inteiro: alerta, tenso, resolvendo problema.</p>
+      <p>A faixa mais alta é a <strong>gama</strong>. É a da intuição, da criatividade que aparece de repente, da conexão espiritual profunda. É a faixa que aparece nos exames de quem está em oração profunda.</p>
+      <p>E ela vibra em torno de <strong>33 ciclos por segundo</strong>. A mesma idade de Cristo na crucificação. Nem um a mais, nem um a menos.</p>
+      <h3>O que trava a gama</h3>
+      <p>Três coisas, e você conhece as três:</p>
+      <ul>
+        <li><strong>A ansiedade</strong>, que é medo do futuro.</li>
+        <li><strong>A depressão</strong>, que é medo do passado.</li>
+        <li><strong>A procrastinação</strong>, que congela o presente.</li>
+      </ul>
+      <p>Enquanto essas três operam, o cérebro fica preso nas faixas baixas. É como ter um rádio sintonizado em Deus com um bloqueador de sinal na mão — e você segura esse bloqueador durante horas por dia, todos os dias.</p>
+      <p>A frequência faz uma coisa só, e faz bem: <strong>ela puxa o cérebro de volta para a faixa gama</strong>. O restante — a oração, o silêncio, o pedido — é o que você faz com a janela que se abre.</p>
+      <div class="note">
+        <strong>Por isso o áudio sozinho não basta.</strong> Ele abre a porta. Quem atravessa é você. É exatamente por isso que este manual existe, e por que os quatro passos do capítulo 4 não são opcionais.
+      </div>
+    </section>
+
+    <section class="chapter" id="c3">
+      <div class="chapter-num">Capítulo 3</div>
+      <h2>As 17 frequências</h2>
+      <p>A número 1 é a original — a base de tudo. As dezesseis seguintes são aplicações dela, calibradas para uma necessidade específica.</p>
+      <p><strong>Regra de ouro:</strong> você usa a nº 1 todos os dias, e escolhe <em>uma só</em> das outras para a semana. Empilhar frequências é o erro mais comum de quem tem pressa — e o que menos funciona.</p>
+      <table class="freq-table">
+        <thead>
+          <tr><th>#</th><th>Frequência</th><th>Quando usar</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>01</td><td>Frequência 33 Original</td><td>Todos os dias, na abertura do ritual. É a base.</td></tr>
+          <tr><td>02</td><td>Abertura do Dia</td><td>Ao acordar, antes de pegar o celular.</td></tr>
+          <tr><td>03</td><td>Selo da Noite</td><td>Ao deitar. Para quem tem sono picado.</td></tr>
+          <tr><td>04</td><td>Corte da Ansiedade</td><td>Peito apertado, mão gelada, pensamento acelerado.</td></tr>
+          <tr><td>05</td><td>Saída do Peso</td><td>Quando o passado e a culpa não largam.</td></tr>
+          <tr><td>06</td><td>Quebra da Procrastinação</td><td>Quando você sabe o que fazer e não faz.</td></tr>
+          <tr><td>07</td><td>Restauração do Corpo</td><td>Dor crônica, cansaço que não passa, convalescença.</td></tr>
+          <tr><td>08</td><td>Abundância e Prosperidade</td><td>Semana de virada financeira ou início de projeto.</td></tr>
+          <tr><td>09</td><td>Quitação e Desbloqueio</td><td>Dívida, negociação, decisão sobre dinheiro.</td></tr>
+          <tr><td>10</td><td>Restauração do Casamento</td><td>Relação endurecida, silêncio dentro de casa.</td></tr>
+          <tr><td>11</td><td>Reencontro com os Filhos</td><td>Afastamento familiar, mágoa antiga.</td></tr>
+          <tr><td>12</td><td>Proteção da Casa</td><td>Ao chegar em casa. Após discussão ou visita pesada.</td></tr>
+          <tr><td>13</td><td>Limpeza do Ambiente</td><td>Mudança de casa, quarto de doente, recomeço.</td></tr>
+          <tr><td>14</td><td>Clareza de Decisão</td><td>Antes de decidir algo grande. Nunca durante a raiva.</td></tr>
+          <tr><td>15</td><td>Perdão e Libertação</td><td>Quando o nome de alguém ainda dói ao ser lembrado.</td></tr>
+          <tr><td>16</td><td>Gratidão e Colheita</td><td>No sétimo dia, sempre. E quando algo se cumprir.</td></tr>
+          <tr><td>17</td><td>Frequência 33 Estendida</td><td>Versão longa, para trabalho, leitura ou dormir.</td></tr>
+        </tbody>
+      </table>
+      <div class="note">
+        <strong>Como escolher a sua.</strong> Não escolha a que parece mais bonita. Escolha a que dói. Se você não souber qual, use a <strong>04 — Corte da Ansiedade</strong> na primeira semana: ela é a que desbloqueia as outras, porque ansiedade é o ruído que impede você de ouvir qualquer outra coisa.
+      </div>
+    </section>
+
+    <section class="chapter" id="c4">
+      <div class="chapter-num">Capítulo 4</div>
+      <h2>O ritual dos 4 passos</h2>
+      <p class="lead">Cinco minutos e quinze segundos. Todos os dias, no mesmo horário, de preferência de manhã.</p>
+      <p>Não é meditação e não é uma oração repetitiva. É uma sequência, e a ordem importa: cada passo prepara o seguinte.</p>
+
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-body">
+          <h4>Selar o ambiente</h4>
+          <div class="step-time">30 segundos</div>
+          <p>Fone de ouvido nos dois ouvidos — isto não é detalhe, é requisito. A frequência trabalha nos dois hemisférios, e caixa de som ou um fone só perde metade do efeito.</p>
+          <p>Celular no modo avião. Porta fechada. Sente-se com a coluna reta, os pés no chão e as mãos abertas sobre as pernas, palmas para cima. Mãos fechadas travam o corpo; mãos abertas dizem ao corpo que ele está recebendo.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-body">
+          <h4>Abrir com a palavra</h4>
+          <div class="step-time">45 segundos</div>
+          <p>Antes de tocar o play, diga a <strong>Oração de Abertura</strong> (capítulo 5) em voz alta. Baixa, mas audível — a voz falada produz um efeito no corpo que o pensamento não produz.</p>
+          <p>Depois nomeie o seu pedido em <em>uma frase só</em>. Sem explicar, sem justificar, sem contar a história inteira. "Que a dívida do cartão se resolva." "Que meu filho volte a falar comigo." Uma frase.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-body">
+          <h4>Receber a frequência</h4>
+          <div class="step-time">3 minutos</div>
+          <p>Toque a Frequência 33 Original. Olhos fechados. <strong>Não tente se concentrar</strong> — essa é a instrução mais importante deste manual, e a que quase todo mundo desobedece.</p>
+          <p>Concentração é esforço, e esforço mantém o cérebro em beta, que é exatamente a faixa que você está tentando deixar. O trabalho aqui é o oposto: soltar. Se o pensamento fugir, deixe ir e volte. Se fugir vinte vezes, volte vinte vezes. Voltar é a prática inteira.</p>
+          <p>Volume médio. Alto não acelera nada, e cansa.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-n">4</div>
+        <div class="step-body">
+          <h4>Selar e anotar</h4>
+          <div class="step-time">1 minuto</div>
+          <p>Quando o áudio terminar, <strong>não abra os olhos imediatamente</strong>. Fique parado por trinta segundos no silêncio que sobra. É nesse silêncio que a maioria das pessoas percebe alguma coisa — e é ele que quase todo mundo pula.</p>
+          <p>Depois, diga a <strong>Oração de Selo</strong> (capítulo 5) e escreva uma linha num caderno: o que você pediu, e qualquer coisa que tenha aparecido. Nome, imagem, lembrança, incômodo. Uma linha basta.</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Por que anotar não é opcional.</strong> A memória guarda muito bem o que dói e perde quase tudo que consola. Sem registro, você vai receber e esquecer que recebeu — e vai concluir que nada aconteceu. O caderno é o que transforma coincidência em evidência.
+      </div>
+    </section>
+
+    <section class="chapter" id="c5">
+      <div class="chapter-num">Capítulo 5</div>
+      <h2>As orações</h2>
+      <h3>Oração de abertura — antes do áudio</h3>
+      <div class="prayer">
+        <p>Senhor, eu me apresento no som que Tu criaste.<br>
+        Que a minha mente saia da faixa do medo<br>
+        e entre na faixa em que Tu falas.</p>
+        <p>Silencia em mim o que é ruído.<br>
+        Desperta em mim o que é Teu.<br>
+        Eu não venho exigir. Eu venho receber.<br>
+        Amém.</p>
+      </div>
+
+      <h3>Oração de selo — depois do áudio</h3>
+      <div class="prayer">
+        <p>Está feito, e não está feito por mim.<br>
+        O que eu pedi, eu entrego.<br>
+        O que eu não soube pedir, Tu já sabes.</p>
+        <p>Que esta frequência permaneça em mim<br>
+        depois que o som acabar,<br>
+        e que hoje eu reconheça a Tua resposta<br>
+        mesmo quando ela vier pequena.<br>
+        Amém.</p>
+      </div>
+
+      <h3>A Oração Divina de Um Minuto</h3>
+      <p>Esta é a oração de emergência. Use nos dias em que não houver tempo para o ritual, no meio do trabalho, dentro do carro, na fila, na madrugada em que o pensamento não deixa dormir. Não substitui o ritual — sustenta você até o próximo.</p>
+      <div class="prayer">
+        <p>Deus, eu paro um minuto.</p>
+        <p>Tira de mim o medo do que ainda não aconteceu.<br>
+        Tira de mim o peso do que já não tem volta.<br>
+        Tira de mim a preguiça do que precisa ser feito agora.</p>
+        <p>Põe a minha mente na Tua frequência.<br>
+        Eu não sei o caminho, mas eu sei quem sabe.<br>
+        Um minuto contigo vale o dia inteiro.<br>
+        Amém.</p>
+      </div>
+
+      <h3>Oração dos três pedidos — uma vez por semana</h3>
+      <p>No primeiro dia de cada semana, escreva três pedidos e reze sobre eles. Três, não mais. Quem pede vinte coisas não pediu nada: apenas listou a própria angústia em voz alta.</p>
+      <div class="prayer">
+        <p>Senhor, eu trago três, e só três.</p>
+        <p>Um pelo corpo: <em>(diga o nome de quem precisa)</em><br>
+        Um pela casa: <em>(diga o que precisa ser curado dentro dela)</em><br>
+        Um pelo caminho: <em>(diga a decisão que está travada)</em></p>
+        <p>Eu os deixo aqui a semana inteira.<br>
+        Não vou trocá-los amanhã por outros.<br>
+        Amém.</p>
+      </div>
+    </section>
+
+    <section class="chapter" id="c6">
+      <div class="chapter-num">Capítulo 6</div>
+      <h2>O protocolo dos 7 dias</h2>
+      <p>Sete dias. O mesmo horário, o mesmo lugar, a mesma frequência escolhida. Não mude nada no meio do caminho — trocar de áudio todo dia é cavar sete buracos rasos em vez de um poço.</p>
+      <h3>Dia a dia</h3>
+      <ul>
+        <li><strong>Dia 1 — Chegar.</strong> Faça o ritual completo e não espere nada. Escreva os três pedidos.</li>
+        <li><strong>Dia 2 — Repetir.</strong> Igual ao dia 1. É provável que sua cabeça fuja o tempo todo. Normal.</li>
+        <li><strong>Dia 3 — Reparar.</strong> Comece a observar o dia inteiro, não só o ritual. É aqui que costumam aparecer as primeiras lembranças fora de hora.</li>
+        <li><strong>Dia 4 — O dia difícil.</strong> Costuma ser o dia em que dá vontade de parar. Não pare. Faça mesmo sem sentir.</li>
+        <li><strong>Dia 5 — Reler.</strong> Volte ao caderno e leia as quatro linhas anteriores. Marque o que já se moveu.</li>
+        <li><strong>Dia 6 — Aprofundar.</strong> Faça o ritual e depois fique mais dois minutos em silêncio, sem áudio nenhum.</li>
+        <li><strong>Dia 7 — Colher.</strong> Use a frequência <strong>16 — Gratidão e Colheita</strong> no lugar da que você vinha usando. Releia a semana inteira e escreva o que você não teria escrito no dia 1.</li>
+      </ul>
+      <div class="note">
+        <strong>Se você furar um dia.</strong> Não recomece do zero e não tente compensar fazendo duas vezes no dia seguinte. Retome no ponto em que parou. A prática perdoa falha; ela não perdoa abandono.
+      </div>
+    </section>
+
+    <section class="chapter" id="c7">
+      <div class="chapter-num">Capítulo 7</div>
+      <h2>O que esperar — e o que não esperar</h2>
+      <p>Esta é a página mais honesta do manual, e a que vai poupar você de frustração.</p>
+      <div class="do-dont">
+        <div class="box do">
+          <h5>O que costuma acontecer</h5>
+          <ul>
+            <li>Formigamento leve na testa ou no alto da cabeça, nos primeiros minutos</li>
+            <li>Calor no peito, ou uma vontade de chorar sem motivo claro</li>
+            <li>Sono mais pesado já na primeira ou segunda noite</li>
+            <li>Acordar antes do despertador, sem cansaço</li>
+            <li>Lembrar de alguém, ou de uma pendência, sem ter pensado nisso</li>
+            <li>Uma calma que aparece sem que o problema tenha mudado</li>
+          </ul>
+        </div>
+        <div class="box dont">
+          <h5>O que não vai acontecer</h5>
+          <ul>
+            <li>Visão, voz audível ou aparição</li>
+            <li>Resultado no primeiro dia — nem no segundo</li>
+            <li>Dinheiro caindo na conta sem que você mova nada</li>
+            <li>Mudança em quem não quer mudar</li>
+            <li>Sensação forte todos os dias — vai haver dia seco</li>
+            <li>Substituição de tratamento médico ou de remédio prescrito</li>
+          </ul>
+        </div>
+      </div>
+      <h3>Sobre o dia seco</h3>
+      <p>Vai acontecer. Você senta, faz tudo certo e não sente absolutamente nada. E vem o pensamento: <em>"isso não funciona comigo"</em>.</p>
+      <p>Guarde isto: <strong>o dia seco não é ausência — é a prática mudando de nível.</strong> É o momento em que você deixa de ser sustentado pela emoção e passa a ser sustentado pela fidelidade. Todo mestre espiritual sério descreveu esse período. Quem atravessa, avança. Quem para no dia seco, para para sempre.</p>
+      <div class="note">
+        <strong>Importante.</strong> Esta é uma prática espiritual e devocional. Ela não substitui acompanhamento médico, psicológico ou psiquiátrico, e não interrompa nenhum tratamento por causa dela. Uma coisa acompanha a outra — nunca uma no lugar da outra.
+      </div>
+    </section>
+
+    <section class="chapter" id="c8">
+      <div class="chapter-num">Capítulo 8</div>
+      <h2>Os cinco erros que anulam a frequência</h2>
+      <p>Quase todo relato de "não funcionou" cabe em um destes cinco. Leia com honestidade.</p>
+      <ol>
+        <li><strong>Ouvir sem fone, ou com um fone só.</strong> A frequência trabalha nos dois hemisférios. Caixa de som e fone único entregam metade — e metade não abre a faixa gama.</li>
+        <li><strong>Ouvir fazendo outra coisa.</strong> No trânsito, lavando louça, respondendo mensagem. Vira música de fundo. Cinco minutos parado valem mais do que duas horas distraído.</li>
+        <li><strong>Tentar se concentrar com força.</strong> Esforço é beta. Você está tentando sair de beta. Solte.</li>
+        <li><strong>Trocar de frequência todo dia.</strong> Ansiedade disfarçada de dedicação. Uma por semana. Sempre.</li>
+        <li><strong>Parar no terceiro ou quarto dia.</strong> É exatamente onde a coisa ia começar. Quem chega ao sétimo dia raramente pede reembolso; quem para no quarto quase sempre pede — e não porque não funcionou, mas porque não chegou lá.</li>
+      </ol>
+      <div class="note">
+        <strong>Se você já cometeu algum destes.</strong> Não se culpe e não recomece do zero. Corrija a partir de amanhã e siga contando os dias de onde parou.
+      </div>
+    </section>
+
+    <section class="chapter" id="c9">
+      <div class="chapter-num">Capítulo 9</div>
+      <h2>Perguntas frequentes</h2>
+
+      <div class="faq">
+        <h4>Ouvi e não senti nada. Está errado?</h4>
+        <p>Não. A maioria não sente nada nos dois primeiros dias, e uma parte das pessoas não sente nada em nenhum dia — e mesmo assim colhe resultado. Sensação não é medida de efeito; é medida de sensibilidade, e ela varia de pessoa para pessoa. O que mede é o caderno, ao fim da semana.</p>
+      </div>
+
+      <div class="faq">
+        <h4>Posso ouvir dormindo?</h4>
+        <p>Pode, com a <strong>17 — Estendida</strong> e com a <strong>03 — Selo da Noite</strong>. Mas isso é complemento, não substituto. O ritual de manhã, acordado, é o que produz o efeito principal.</p>
+      </div>
+
+      <div class="faq">
+        <h4>Quantas vezes por dia?</h4>
+        <p>Uma. No máximo duas, se a segunda for à noite. Mais do que isso não acelera nada — a faixa gama não responde a excesso, responde a regularidade.</p>
+      </div>
+
+      <div class="faq">
+        <h4>Posso compartilhar com minha família?</h4>
+        <p>Pode ouvir junto, na mesma sala, com a pessoa ao seu lado. O que você não deve fazer é distribuir o arquivo — cada acesso é individual e rastreado, e a redistribuição é justamente o que ameaça a continuidade de tudo isso.</p>
+      </div>
+
+      <div class="faq">
+        <h4>Estou tomando remédio controlado. Posso usar?</h4>
+        <p>Pode, e não interrompa nada por causa disso. Esta é uma prática de oração acompanhada de áudio, não um tratamento. Se tiver qualquer dúvida sobre a sua condição, fale com o seu médico — a prática convive com o tratamento sem nenhum conflito.</p>
+      </div>
+
+      <div class="faq">
+        <h4>Preciso ser católico?</h4>
+        <p>Não. É preciso ter fé em Deus e disposição para cumprir sete dias. As orações deste manual são cristãs e podem ser rezadas por qualquer pessoa que creia.</p>
+      </div>
+
+      <div class="faq">
+        <h4>Faz quanto tempo que eu deveria ver resultado?</h4>
+        <p>O protocolo é de sete dias. Julgar antes disso é como abrir o forno no meio do bolo. Cumpra os sete, releia o caderno no sétimo, e aí sim faça o seu julgamento — com registro na mão, não com memória.</p>
+      </div>
+    </section>
+
+    <section class="chapter" id="c10">
+      <div class="chapter-num">Capítulo 10</div>
+      <h2>Depois dos 7 dias</h2>
+      <p>Não existe capítulo 11. Existe a segunda semana, e ela é igual à primeira — com uma frequência nova, escolhida pela área que ficou em aberto.</p>
+      <h3>O ciclo permanente</h3>
+      <ul>
+        <li><strong>Toda semana:</strong> escolha uma frequência da tabela e três pedidos. Só três.</li>
+        <li><strong>Todo dia:</strong> o ritual dos quatro passos, cinco minutos e quinze segundos.</li>
+        <li><strong>Todo sétimo dia:</strong> a frequência 16 e a releitura do caderno.</li>
+        <li><strong>Todo mês:</strong> releia o mês inteiro de uma vez. É aqui que as pessoas se assustam com o que receberam sem perceber.</li>
+      </ul>
+      <p>Foi assim que a prática se manteve viva: não por intensidade, mas por repetição. Quem faz cinco minutos por dia durante um ano vence quem faz duas horas uma vez por mês, sempre — e não é nem perto.</p>
+      <div class="prayer">
+        <p>Senhor, eu cheguei até o sétimo dia.<br>
+        Vim nos dias em que senti,<br>
+        e vim também nos dias em que não senti nada.</p>
+        <p>Mantém a minha mente na Tua faixa.<br>
+        E quando eu me afastar — porque eu vou me afastar —<br>
+        faz o caminho de volta ser curto.<br>
+        Amém.</p>
+      </div>
+      <div class="note">
+        <strong>Lembrete.</strong> Assim que os áudios restantes voltarem ao ar, você será avisado. Nada do que está neste manual muda: o ritual, as orações e o protocolo continuam exatamente iguais.
+      </div>
+      <div class="end">✦</div>
+    </section>
+
+  </main>
+
+  <button class="print-hint" type="button" onclick="window.print()">Salvar em PDF</button>
+
+</body>
+</html>

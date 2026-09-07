@@ -31,222 +31,179 @@
       line-height: 1.75;
     }
 
-    /* ---------- Barra superior ---------- */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(11, 11, 13, .94);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line);
-    }
-    .topbar-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 12px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-    }
-    .brand {
-      font-family: var(--sans);
-      font-size: 11px;
-      letter-spacing: 2.4px;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-    .counter {
-      font-family: var(--sans);
-      font-size: 12px;
-      color: var(--ink-soft);
-      white-space: nowrap;
-    }
-    .progress {
-      height: 2px;
-      background: var(--line);
-    }
-    .progress-fill {
-      height: 100%;
-      width: 10%;
-      background: var(--gold);
-      transition: width .3s ease;
-    }
+    .sheet { max-width: 720px; margin: 0 auto; padding: 54px 22px 90px; }
 
-    /* ---------- Folha ---------- */
-    .sheet {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 40px 22px 130px;
+    /* ---------- Capa ---------- */
+    .cover { text-align: center; padding-bottom: 40px; border-bottom: 1px solid var(--line); margin-bottom: 46px; }
+    .kicker {
+      font-family: var(--sans); font-size: 11px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
     }
-    .page { display: none; animation: rise .32s ease both; }
-    .page.active { display: block; }
-    @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    h1 { font-size: 42px; font-weight: 700; line-height: 1.12; margin-bottom: 14px; }
+    .subtitle { font-size: 19px; color: var(--ink-soft); font-style: italic; }
 
-    .page-num {
-      font-family: var(--sans);
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold-soft);
-      margin-bottom: 14px;
+    /* ---------- Sumario ---------- */
+    .toc {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+      padding: 26px 28px; margin-bottom: 52px;
     }
-    h1 {
-      font-size: 34px;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 8px;
+    .toc h4 {
+      font-family: var(--sans); font-size: 12px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 700;
     }
-    h2 {
-      font-size: 26px;
-      font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 20px;
+    .toc ol { margin: 0 0 0 20px; }
+    .toc li { margin-bottom: 8px; }
+    .toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; }
+    .toc a:hover { border-bottom-color: var(--gold); }
+
+    /* ---------- Capitulos ---------- */
+    .chapter { margin-bottom: 58px; }
+    .chapter-num {
+      font-family: var(--sans); font-size: 11px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold-soft); margin-bottom: 12px;
     }
+    h2 { font-size: 29px; font-weight: 700; line-height: 1.22; margin-bottom: 22px; }
     h3 {
-      font-family: var(--sans);
-      font-size: 13px;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin: 32px 0 12px;
+      font-family: var(--sans); font-size: 13px; letter-spacing: 1.6px;
+      text-transform: uppercase; color: var(--gold); margin: 32px 0 12px;
     }
     p { margin-bottom: 18px; }
-    .lead { font-size: 19px; color: var(--ink); }
+    .lead { font-size: 19px; }
     em { color: var(--gold); font-style: italic; }
     strong { color: #fff; }
 
-    .rule {
-      width: 60px;
-      height: 1px;
-      background: var(--gold-soft);
-      margin: 26px 0;
-    }
-
+    .rule { width: 60px; height: 1px; background: var(--gold-soft); margin: 26px auto; }
     ol, ul { margin: 0 0 18px 22px; }
     li { margin-bottom: 10px; }
 
     .prayer {
-      border-left: 2px solid var(--gold);
-      background: var(--paper);
-      padding: 20px 22px;
-      margin: 26px 0;
-      font-style: italic;
-      font-size: 18px;
+      border-left: 2px solid var(--gold); background: var(--paper);
+      padding: 20px 22px; margin: 26px 0; font-style: italic; font-size: 18px;
     }
     .prayer p:last-child { margin-bottom: 0; }
 
     .note {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 18px 20px;
-      margin: 26px 0;
-      font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.65;
-      color: var(--ink-soft);
+      background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+      padding: 18px 20px; margin: 26px 0;
+      font-family: var(--sans); font-size: 15px; line-height: 1.65; color: var(--ink-soft);
     }
     .note strong { color: var(--ink); }
 
-    /* ---------- Aviso dos audios ---------- */
     .alert {
-      background: #1a1206;
-      border: 1px solid var(--gold-soft);
-      border-radius: 10px;
-      padding: 20px 22px;
-      margin-bottom: 34px;
-      font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.65;
-      color: #e8dcbb;
+      background: #1a1206; border: 1px solid var(--gold-soft); border-radius: 10px;
+      padding: 22px 24px; margin-bottom: 46px;
+      font-family: var(--sans); font-size: 15px; line-height: 1.65; color: #e8dcbb;
     }
     .alert-title {
-      display: block;
-      font-weight: 700;
-      letter-spacing: .4px;
-      color: var(--gold);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      font-size: 13px;
+      display: block; font-weight: 700; letter-spacing: .4px; color: var(--gold);
+      margin-bottom: 8px; text-transform: uppercase; font-size: 13px;
     }
     .alert p { margin-bottom: 10px; }
     .alert p:last-child { margin-bottom: 0; }
 
-    /* ---------- Navegacao ---------- */
-    .nav {
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      z-index: 20;
-      background: rgba(11, 11, 13, .96);
-      backdrop-filter: blur(8px);
-      border-top: 1px solid var(--line);
-    }
-    .nav-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 12px 18px calc(12px + env(safe-area-inset-bottom));
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .nav button {
-      flex: 1;
-      font-family: var(--sans);
-      font-size: 14px;
-      font-weight: 600;
-      padding: 14px 12px;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      color: var(--ink);
-      cursor: pointer;
-      transition: border-color .18s ease, color .18s ease;
-    }
-    .nav button:hover:not(:disabled) { border-color: var(--gold); color: var(--gold); }
-    .nav button:disabled { opacity: .32; cursor: default; }
-    .nav button.primary {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: #17130a;
-    }
-    .nav button.primary:hover { color: #17130a; }
+    .end { text-align: center; color: var(--gold-soft); font-size: 22px; letter-spacing: 8px; margin-top: 20px; }
 
-    .dots { display: flex; gap: 5px; }
-    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--line); }
-    .dot.on { background: var(--gold); }
+    .print-hint {
+      position: fixed; right: 16px; bottom: 16px; z-index: 30;
+      font-family: var(--sans); font-size: 13px; font-weight: 600;
+      background: var(--gold); color: #17130a; border: 0;
+      padding: 12px 18px; border-radius: 999px; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,0,0,.5);
+    }
 
     @media (max-width: 600px) {
-      h1 { font-size: 27px; }
-      h2 { font-size: 22px; }
+      h1 { font-size: 30px; }
+      h2 { font-size: 23px; }
       .lead { font-size: 17px; }
-      .sheet { padding: 30px 18px 130px; }
-      .dots { display: none; }
+      .sheet { padding: 36px 18px 80px; }
+      .toc { padding: 20px 20px; }
+    }
+
+    /* ==========================================================
+       IMPRESSAO / PDF - papel branco, tinta preta, quebras limpas
+       ========================================================== */
+    @media print {
+      @page { size: A4; margin: 18mm 16mm; }
+      html, body {
+        background: #fff !important;
+        color: #14110c !important;
+        font-size: 11.5pt;
+        line-height: 1.6;
+      }
+      .print-hint { display: none !important; }
+      .sheet { max-width: none; padding: 0; }
+
+      .cover { border-bottom: 1px solid #c9a227; page-break-after: always; padding: 60mm 0 40px; }
+      h1 { font-size: 30pt; color: #14110c !important; }
+      .kicker, .chapter-num, h3 { color: #8a7220 !important; }
+      .subtitle { color: #4a4438 !important; }
+
+      .toc { page-break-after: always; background: none; border: 1px solid #d8d2c4; }
+      .toc a { color: #14110c !important; }
+
+      .chapter { page-break-before: always; margin-bottom: 0; }
+      .chapter:first-of-type { page-break-before: avoid; }
+      h2 { font-size: 19pt; color: #14110c !important; page-break-after: avoid; }
+      h3 { page-break-after: avoid; }
+      p, li { orphans: 3; widows: 3; }
+      em { color: #8a7220 !important; }
+      strong { color: #000 !important; }
+
+      .prayer {
+        background: #faf7ef !important; border-left: 3px solid #c9a227;
+        color: #14110c !important; page-break-inside: avoid;
+      }
+      .note {
+        background: #f4f2ec !important; border: 1px solid #d8d2c4;
+        color: #3d382e !important; page-break-inside: avoid;
+      }
+      .note strong { color: #14110c !important; }
+      .alert {
+        background: #fdf8e8 !important; border: 1px solid #c9a227;
+        color: #3d3524 !important; page-break-inside: avoid;
+      }
+      .alert-title { color: #8a7220 !important; }
+      .alert strong { color: #14110c !important; }
+      .rule { background: #c9a227; }
+      .end { color: #8a7220 !important; }
     }
   </style>
 </head>
 <body>
 
-  <header class="topbar">
-    <div class="topbar-inner">
-      <span class="brand">Manuscrito Sagrado</span>
-      <span class="counter"><span id="cur">1</span> de 10</span>
-    </div>
-    <div class="progress"><div class="progress-fill" id="bar"></div></div>
-  </header>
+  <main class="sheet">
 
-  <main class="sheet" id="sheet">
-
-    <!-- 1 -->
-    <article class="page active">
-      <div class="alert">
-        <span class="alert-title">Aviso importante — leia antes de começar</span>
-        <p>Por causa das tentativas de derrubar a nossa página, <strong>os áudios saíram do ar temporariamente</strong>. Eles voltam em breve, e você será avisado assim que forem restabelecidos.</p>
-        <p>Enquanto isso, este manuscrito é o suficiente. Ele foi escrito para ser praticado em silêncio — e o silêncio, aqui, trabalha a seu favor.</p>
-      </div>
-
-      <div class="page-num">Página 1 · Abertura</div>
+    <header class="cover">
+      <div class="kicker">Manuscrito Sagrado</div>
       <h1>Café com seu Anjo</h1>
+      <p class="subtitle">O encontro diário que você tem faltado</p>
+    </header>
+
+    <div class="alert">
+      <span class="alert-title">Aviso importante — leia antes de começar</span>
+      <p>Por causa das tentativas de derrubar a nossa página, <strong>os áudios saíram do ar temporariamente</strong>. Eles voltam em breve, e você será avisado assim que forem restabelecidos.</p>
+      <p>Enquanto isso, este manuscrito é o suficiente. Ele foi escrito para ser praticado em silêncio — e o silêncio, aqui, trabalha a seu favor.</p>
+    </div>
+
+    <nav class="toc">
+      <h4>Neste manuscrito</h4>
+      <ol>
+        <li><a href="#c1">A abertura</a></li>
+        <li><a href="#c2">Quem se senta com você</a></li>
+        <li><a href="#c3">A preparação do encontro</a></li>
+        <li><a href="#c4">A primeira conversa</a></li>
+        <li><a href="#c5">Como a resposta chega</a></li>
+        <li><a href="#c6">O caderno das respostas</a></li>
+        <li><a href="#c7">Os três pedidos</a></li>
+        <li><a href="#c8">Quando parece que ninguém veio</a></li>
+        <li><a href="#c9">Os sete dias</a></li>
+        <li><a href="#c10">O selo</a></li>
+      </ol>
+    </nav>
+
+    <section class="chapter" id="c1">
+      <div class="chapter-num">Capítulo 1</div>
+      <h2>A abertura</h2>
       <p class="lead">Existe um encontro marcado todos os dias, na sua cozinha, e você tem faltado a ele.</p>
       <div class="rule"></div>
       <p>Este manuscrito não ensina uma oração nova. Ele ensina uma <em>hora</em>.</p>
@@ -254,13 +211,12 @@
       <p>Os antigos sabiam disso. Antes de o dia começar a exigir coisas de você, existe uma janela de poucos minutos em que a sua mente ainda não foi capturada. Nenhuma tela, nenhuma notícia, nenhuma dívida entrou nela ainda. É nessa janela que o encontro acontece.</p>
       <p>Você vai precisar de três coisas: uma xícara, uma cadeira e a decisão de não levar o celular junto.</p>
       <div class="note">
-        <strong>Como ler este manuscrito.</strong> Não leia as dez páginas de uma vez. Leia uma por dia, na ordem, e pratique o que ela pede antes de virar para a próxima. Dez páginas, dez manhãs. O manuscrito foi construído nessa medida.
+        <strong>Como ler este manuscrito.</strong> Não leia os dez capítulos de uma vez. Leia um por dia, na ordem, e pratique o que ele pede antes de passar para o próximo. Dez capítulos, dez manhãs. O manuscrito foi construído nessa medida.
       </div>
-    </article>
+    </section>
 
-    <!-- 2 -->
-    <article class="page">
-      <div class="page-num">Página 2 · O convidado</div>
+    <section class="chapter" id="c2">
+      <div class="chapter-num">Capítulo 2</div>
       <h2>Quem se senta com você</h2>
       <p>A tradição cristã sustenta, desde os primeiros séculos, que cada pessoa recebe um guardião. Não é uma invenção devocional tardia: está em Mateus 18, quando Cristo adverte que os anjos dos pequeninos <em>veem sem cessar a face do Pai</em>. Está no Salmo 91, quando a promessa é de ordem dada aos anjos a seu respeito, para guardá-lo em todos os seus caminhos.</p>
       <p>O que se perdeu não foi a doutrina. Foi o hábito.</p>
@@ -270,13 +226,12 @@
       <p>Toda prática espiritual que exige um horário novo morre em duas semanas. Toda prática que se ancora num hábito que já existe sobrevive. Você não vai criar um tempo de oração: você vai transformar em oração um tempo que já é seu.</p>
       <p>É por isso que este manuscrito se chama <em>Café com seu Anjo</em>. Não é metáfora. É o método.</p>
       <div class="note">
-        <strong>Hoje.</strong> Amanhã de manhã, ao preparar o café, prepare-o em silêncio. Não fale com ninguém, não ligue nada. Apenas repare no cheiro, no som da água, no calor da xícara. Isso é tudo o que a página 2 pede. É mais difícil do que parece.
+        <strong>A prática de hoje.</strong> Amanhã de manhã, ao preparar o café, prepare-o em silêncio. Não fale com ninguém, não ligue nada. Apenas repare no cheiro, no som da água, no calor da xícara. Isso é tudo o que este capítulo pede. É mais difícil do que parece.
       </div>
-    </article>
+    </section>
 
-    <!-- 3 -->
-    <article class="page">
-      <div class="page-num">Página 3 · O lugar</div>
+    <section class="chapter" id="c3">
+      <div class="chapter-num">Capítulo 3</div>
       <h2>A preparação do encontro</h2>
       <p>Quem recebe uma visita arruma a casa. Não a casa inteira — o canto onde a visita vai sentar.</p>
       <p>Escolha hoje o seu canto. Precisa cumprir três exigências, e nenhuma delas é religiosa:</p>
@@ -290,13 +245,12 @@
       <p>A mente humana não trata uma presença invisível da mesma forma que trata um lugar posto. Pôr a mesa para alguém muda o modo como você fala — o tom baixa, a pressa some, as palavras ficam mais verdadeiras. Não é o anjo que precisa da xícara. É você.</p>
       <p>Coloque-a. Todos os dias. Mesmo nos dias em que você não sentir absolutamente nada.</p>
       <div class="note">
-        <strong>Hoje.</strong> Escolha a cadeira e ponha a segunda xícara. Sente-se por três minutos, sem falar nada, sem pedir nada. Só ficar. Este é o dia mais importante do manuscrito e o que menos parece.
+        <strong>A prática de hoje.</strong> Escolha a cadeira e ponha a segunda xícara. Sente-se por três minutos, sem falar nada, sem pedir nada. Só ficar. Este é o dia mais importante do manuscrito e o que menos parece.
       </div>
-    </article>
+    </section>
 
-    <!-- 4 -->
-    <article class="page">
-      <div class="page-num">Página 4 · A abertura</div>
+    <section class="chapter" id="c4">
+      <div class="chapter-num">Capítulo 4</div>
       <h2>A primeira conversa</h2>
       <p>Toda visita começa com uma saudação. Sem ela, o encontro fica constrangido — você senta e não sabe por onde começar.</p>
       <p>A oração abaixo é a saudação. Ela é curta de propósito. Não é para ser bonita, é para ser dita todos os dias sem cansar.</p>
@@ -313,13 +267,12 @@
       <p><em>Senta-te comigo hoje</em> transforma a oração em convite. Você deixa de recitar e passa a receber.</p>
       <p><em>Antes que o dia me tome, me lembra de quem eu sou</em> é o pedido mais importante que você fará de manhã. Porque a ansiedade não inventa problemas: ela faz você esquecer a sua própria estatura diante deles.</p>
       <div class="note">
-        <strong>Hoje.</strong> Diga a oração em voz alta — baixa, mas em voz alta. Pensar a oração e falar a oração produzem efeitos diferentes no corpo. Fale.
+        <strong>A prática de hoje.</strong> Diga a oração em voz alta — baixa, mas em voz alta. Pensar a oração e falar a oração produzem efeitos diferentes no corpo. Fale.
       </div>
-    </article>
+    </section>
 
-    <!-- 5 -->
-    <article class="page">
-      <div class="page-num">Página 5 · A escuta</div>
+    <section class="chapter" id="c5">
+      <div class="chapter-num">Capítulo 5</div>
       <h2>Como a resposta chega</h2>
       <p>Aqui é onde a maioria desiste. A pessoa reza, fica em silêncio, não ouve nenhuma voz, conclui que não funciona e para.</p>
       <p>O erro está na expectativa, não na prática.</p>
@@ -332,13 +285,12 @@
         <li><strong>A paz sem causa.</strong> A situação não mudou, mas o peso saiu. Este é o sinal mais raro e o mais confiável.</li>
       </ul>
       <div class="note">
-        <strong>Hoje.</strong> Depois da oração, fique dois minutos em silêncio e repare no que aparece. Não julgue, não filtre. Apenas repare.
+        <strong>A prática de hoje.</strong> Depois da oração, fique dois minutos em silêncio e repare no que aparece. Não julgue, não filtre. Apenas repare.
       </div>
-    </article>
+    </section>
 
-    <!-- 6 -->
-    <article class="page">
-      <div class="page-num">Página 6 · O registro</div>
+    <section class="chapter" id="c6">
+      <div class="chapter-num">Capítulo 6</div>
       <h2>O caderno das respostas</h2>
       <p>Se você não anotar, você vai esquecer. E se esquecer, vai continuar achando que nada acontece — quando na verdade acontece e some.</p>
       <p>A memória é péssima guardando graça. Ela guarda muito bem o que dói, e deixa escapar quase tudo que consola. É por isso que pessoas que receberam muito continuam se sentindo abandonadas: elas não têm registro.</p>
@@ -347,13 +299,12 @@
       <p>Divida a linha em duas metades. Do lado esquerdo, o que você levou ao encontro. Do lado direito, o que apareceu depois — hoje, amanhã, na semana seguinte. Deixe o lado direito em branco quando não houver nada. Ele será preenchido depois, e é justamente aí que o caderno faz o seu trabalho.</p>
       <p>Em trinta dias você vai reler e encontrar coisas que não sabia que tinha recebido. Essa releitura é a prova. E prova, na vida espiritual, é o que sustenta a fé nos dias secos.</p>
       <div class="note">
-        <strong>Hoje.</strong> Separe o caderno. Escreva na primeira página a data de hoje e a frase: <em>"Comecei aqui."</em>
+        <strong>A prática de hoje.</strong> Separe o caderno. Escreva na primeira página a data de hoje e a frase: <em>"Comecei aqui."</em>
       </div>
-    </article>
+    </section>
 
-    <!-- 7 -->
-    <article class="page">
-      <div class="page-num">Página 7 · O pedido</div>
+    <section class="chapter" id="c7">
+      <div class="chapter-num">Capítulo 7</div>
       <h2>Os três pedidos</h2>
       <p>Chega o momento de pedir. E há uma regra: <strong>três pedidos, não mais.</strong></p>
       <p>Não por escassez. Por foco. Quem pede vinte coisas não pediu nada — apenas listou a própria angústia em voz alta. Três pedidos obrigam você a decidir o que realmente importa, e essa decisão já é metade do caminho.</p>
@@ -365,13 +316,12 @@
       </ol>
       <p>Os mesmos três, todos os dias, até que se resolvam. Trocar de pedido a cada manhã é como cavar três buracos rasos em vez de um poço.</p>
       <div class="note">
-        <strong>Hoje.</strong> Escreva os seus três no caderno, na página de trás. Eles ficam ali. Você vai olhar para eles todos os dias.
+        <strong>A prática de hoje.</strong> Escreva os seus três no caderno, na página de trás. Eles ficam ali. Você vai olhar para eles todos os dias.
       </div>
-    </article>
+    </section>
 
-    <!-- 8 -->
-    <article class="page">
-      <div class="page-num">Página 8 · O silêncio</div>
+    <section class="chapter" id="c8">
+      <div class="chapter-num">Capítulo 8</div>
       <h2>Quando parece que ninguém veio</h2>
       <p>Vai acontecer. Uma manhã você senta, põe a xícara, reza — e sente exatamente nada. E no dia seguinte de novo. E aí vem o pensamento: <em>"isso não é para mim"</em>.</p>
       <p>Guarde isto: <strong>o dia seco não é ausência. É a prática mudando de nível.</strong></p>
@@ -380,20 +330,19 @@
       <p>Não mude nada. Não reze mais tempo, não reze com mais força, não procure uma oração mais poderosa. Faça exatamente o mesmo, no mesmo lugar, na mesma hora, com a mesma xícara vazia do outro lado.</p>
       <p>A fidelidade no dia vazio vale mais do que o fervor no dia fácil. Quem só aparece quando sente, não construiu relação — construiu dependência de sensação.</p>
       <div class="note">
-        <strong>Hoje.</strong> Se hoje for um dia seco, escreva no caderno apenas: <em>"Vim assim mesmo."</em> Essa linha, repetida algumas vezes ao longo dos meses, vai se tornar a página que você mais vai respeitar.
+        <strong>A prática de hoje.</strong> Se hoje for um dia seco, escreva no caderno apenas: <em>"Vim assim mesmo."</em> Essa linha, repetida algumas vezes ao longo dos meses, vai se tornar a página que você mais vai respeitar.
       </div>
-    </article>
+    </section>
 
-    <!-- 9 -->
-    <article class="page">
-      <div class="page-num">Página 9 · A prática</div>
+    <section class="chapter" id="c9">
+      <div class="chapter-num">Capítulo 9</div>
       <h2>Os sete dias</h2>
-      <p>Você já tem todas as peças. Esta página junta tudo numa sequência que se repete por sete dias.</p>
+      <p>Você já tem todas as peças. Este capítulo junta tudo numa sequência que se repete por sete dias.</p>
       <h3>O roteiro da manhã</h3>
       <ol>
         <li><strong>Prepare o café em silêncio.</strong> Sem falar, sem telas. Dois a três minutos.</li>
         <li><strong>Ponha as duas xícaras.</strong> A sua e a dele. Sente-se na cadeira de sempre.</li>
-        <li><strong>Reze a saudação</strong> da página 4, em voz baixa e audível.</li>
+        <li><strong>Reze a saudação</strong> do capítulo 4, em voz baixa e audível.</li>
         <li><strong>Apresente os três pedidos.</strong> Sem explicar, sem justificar. Nomeie e cale.</li>
         <li><strong>Fique dois minutos em silêncio.</strong> Repare no que aparecer.</li>
         <li><strong>Escreva uma linha no caderno.</strong> Antes de levantar da cadeira.</li>
@@ -402,15 +351,14 @@
       <h3>Os sete dias em ordem</h3>
       <ul>
         <li><strong>Dias 1 e 2 — Chegar.</strong> Só cumprir o roteiro. Não espere nada.</li>
-        <li><strong>Dias 3 e 4 — Reparar.</strong> Comece a olhar para as quatro formas da página 5 ao longo do dia inteiro, não só na cadeira.</li>
+        <li><strong>Dias 3 e 4 — Reparar.</strong> Comece a olhar para as quatro formas do capítulo 5 ao longo do dia inteiro, não só na cadeira.</li>
         <li><strong>Dia 5 — Reler.</strong> Volte ao caderno e leia as quatro primeiras linhas. Preencha o lado direito do que já respondeu.</li>
-        <li><strong>Dias 6 e 7 — Insistir.</strong> Provavelmente um deles será seco. Aplique a regra da página 8.</li>
+        <li><strong>Dias 6 e 7 — Insistir.</strong> Provavelmente um deles será seco. Aplique a regra do capítulo 8.</li>
       </ul>
-    </article>
+    </section>
 
-    <!-- 10 -->
-    <article class="page">
-      <div class="page-num">Página 10 · Encerramento</div>
+    <section class="chapter" id="c10">
+      <div class="chapter-num">Capítulo 10</div>
       <h2>O selo</h2>
       <p>No sétimo dia, depois do roteiro, faça uma coisa a mais.</p>
       <p>Pegue o caderno, releia as sete linhas e escreva embaixo o que você não teria escrito no dia 1. Pode ser um agradecimento, pode ser um susto, pode ser uma única palavra. O que importa é que seja escrito por quem já passou sete manhãs sentado ali — não pela pessoa que começou.</p>
@@ -424,78 +372,17 @@
         Amém.</p>
       </div>
       <h3>Depois do sétimo dia</h3>
-      <p>Recomece. Não existe página 11 — existe a segunda semana, e ela é igual à primeira.</p>
+      <p>Recomece. Não existe capítulo 11 — existe a segunda semana, e ela é igual à primeira.</p>
       <p>Isto não é um curso que termina. É um hábito que se instala. O manuscrito acaba aqui justamente porque a partir daqui não é mais leitura: é cadeira, xícara e manhã.</p>
       <div class="note">
         <strong>Lembrete.</strong> Assim que os áudios voltarem ao ar, você será avisado. Até lá, os sete dias funcionam exatamente como estão descritos — foi assim que a prática existiu por séculos, antes de existir qualquer gravação.
       </div>
-    </article>
+      <div class="end">✦</div>
+    </section>
 
   </main>
 
-  <nav class="nav">
-    <div class="nav-inner">
-      <button id="prev" type="button">← Anterior</button>
-      <div class="dots" id="dots"></div>
-      <button id="next" type="button" class="primary">Próxima →</button>
-    </div>
-  </nav>
-
-  <script>
-    (function () {
-      var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
-      var total = pages.length;
-      var i = 0;
-      var prev = document.getElementById('prev');
-      var next = document.getElementById('next');
-      var cur = document.getElementById('cur');
-      var bar = document.getElementById('bar');
-      var dots = document.getElementById('dots');
-
-      pages.forEach(function (_, n) {
-        var d = document.createElement('span');
-        d.className = 'dot' + (n === 0 ? ' on' : '');
-        dots.appendChild(d);
-      });
-      var dotEls = dots.children;
-
-      function show(n) {
-        i = Math.max(0, Math.min(total - 1, n));
-        pages.forEach(function (p, k) { p.classList.toggle('active', k === i); });
-        for (var k = 0; k < dotEls.length; k++) dotEls[k].className = 'dot' + (k === i ? ' on' : '');
-        cur.textContent = i + 1;
-        bar.style.width = ((i + 1) / total * 100) + '%';
-        prev.disabled = i === 0;
-        next.textContent = i === total - 1 ? 'Recomeçar' : 'Próxima →';
-        window.scrollTo(0, 0);
-        try { localStorage.setItem('cafe-anjo-pg', String(i)); } catch (e) {}
-      }
-
-      prev.addEventListener('click', function () { show(i - 1); });
-      next.addEventListener('click', function () { show(i === total - 1 ? 0 : i + 1); });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'ArrowLeft') show(i - 1);
-        if (e.key === 'ArrowRight') show(i + 1);
-      });
-
-      // Swipe horizontal para virar a pagina
-      var x0 = null, y0 = null;
-      document.addEventListener('touchstart', function (e) {
-        x0 = e.changedTouches[0].clientX; y0 = e.changedTouches[0].clientY;
-      }, { passive: true });
-      document.addEventListener('touchend', function (e) {
-        if (x0 === null) return;
-        var dx = e.changedTouches[0].clientX - x0;
-        var dy = e.changedTouches[0].clientY - y0;
-        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? i + 1 : i - 1);
-        x0 = null; y0 = null;
-      }, { passive: true });
-
-      var saved = null;
-      try { saved = localStorage.getItem('cafe-anjo-pg'); } catch (e) {}
-      show(saved ? parseInt(saved, 10) || 0 : 0);
-    })();
-  </script>
+  <button class="print-hint" type="button" onclick="window.print()">Salvar em PDF</button>
 
 </body>
 </html>

@@ -241,10 +241,50 @@
       max-width: 400px;
       margin: 24px auto 0 auto;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
     }
     .delay-hidden {
       display: none;
+    }
+
+    /* Bloco de preco: vive dentro do .cta-container, entao aparece
+       exatamente junto com o botao - nunca antes do pitch. */
+    .price-block {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .price-old {
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px;
+      color: var(--gray-sub);
+      letter-spacing: .3px;
+      margin-bottom: 6px;
+    }
+    .price-old s {
+      color: var(--red-highlight);
+      text-decoration-thickness: 2px;
+    }
+    .price-now {
+      font-family: 'Merriweather', serif;
+      font-size: 15px;
+      color: var(--gold-text);
+      line-height: 1.45;
+    }
+    .price-now strong {
+      display: block;
+      font-size: 27px;
+      font-weight: 700;
+      color: var(--gold-glow);
+      text-shadow: 0 0 18px rgba(245, 196, 67, .35);
+      margin: 2px 0;
+    }
+    .price-cash {
+      display: block;
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px;
+      color: var(--gray-sub);
     }
     .btn-cta-vsl {
       display: inline-flex;
@@ -331,6 +371,14 @@
 
       <!-- BOTAO CTA DA PAGINA - liberado aos 23:29 (1409s). Unico CTA do funil. -->
       <div class="cta-container delay-hidden" id="cta-button">
+        <div class="price-block">
+          <p class="price-old">De <s>R$ 112,12</s></p>
+          <p class="price-now">
+            Apenas hoje:
+            <strong>12x de R$ 8,74</strong>
+            <span class="price-cash">ou R$ 89,90 à vista</span>
+          </p>
+        </div>
         <a href="https://pay.cakto.com.br/rs28mit" class="btn-cta-vsl" target="_blank" rel="noopener">
           QUERO OUVIR AS FREQUÊNCIAS 33 HZ
         </a>
