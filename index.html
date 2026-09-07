@@ -426,20 +426,27 @@
   </main>
 
   <script>
-    // Sincroniza o botão CTA da página quando o GuimaTurb liberar o pitch
+    function revealCta() {
+      var btn = document.getElementById('cta-button');
+      if (btn && btn.classList.contains('delay-hidden')) {
+        btn.classList.remove('delay-hidden');
+      }
+    }
+
+    // O botão CTA é 100% sincronizado com o tempo REAL do vídeo (inclusive se acelerar no Global Speed)
     window.addEventListener('message', function(e) {
-      if (e.data && (e.data.event === 'cta_shown' || e.data.event === 'cta')) {
-        var btn = document.getElementById('cta-button');
-        if (btn) btn.classList.remove('delay-hidden');
+      var d = e.data || {};
+      // 1. Disparo direto emitido pelo player quando atinge o tempo do pitch (1409s)
+      if (d.event === 'cta_shown' || d.event === 'cta') {
+        revealCta();
+      }
+      // 2. Acompanhamento frame a frame do tempo atual do vídeo (currentTime)
+      if (d.event === 'timeupdate' && d.data) {
+        if (d.data.currentTime >= 1409) {
+          revealCta();
+        }
       }
     });
-
-    // Delay de segurança do CTA aos 23:29min (1409 segundos)
-    var SECONDS_DELAY = 1409;
-    setTimeout(function() {
-      var btn = document.getElementById('cta-button');
-      if (btn) btn.classList.remove('delay-hidden');
-    }, SECONDS_DELAY * 1000);
 
     // Repassa parâmetros de URL (UTMs e SRC) para os botões de checkout
     (function passUtms() {
